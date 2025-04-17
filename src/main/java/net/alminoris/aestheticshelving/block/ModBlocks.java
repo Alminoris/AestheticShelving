@@ -17,7 +17,7 @@ import java.util.Hashtable;
 
 public class ModBlocks
 {
-    public static final Dictionary<String, Block> SIMPLE_CARPETS = new Hashtable<>()
+    public static final Dictionary<String, Block> SIMPLE_SHELVES = new Hashtable<>()
     {{
         for(String name : BlockSetsHelper.COLORS)
         {

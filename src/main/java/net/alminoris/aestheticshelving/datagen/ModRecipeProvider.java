@@ -23,7 +23,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
     {
         for(String name : BlockSetsHelper.COLORS)
         {
-            ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.SIMPLE_CARPETS.get(name), 4)
+            ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.SIMPLE_SHELVES.get(name), 4)
                     .pattern("##")
                     .input('#', ModBlocks.SIMPLE_CARPET_BLOCKS.get(name))
                     .criterion(hasItem(ModBlocks.SIMPLE_CARPET_BLOCKS.get(name)), conditionsFromItem(ModBlocks.SIMPLE_CARPET_BLOCKS.get(name)))

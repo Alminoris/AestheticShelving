@@ -19,7 +19,7 @@ public class ModModelProvider extends FabricModelProvider
     {
         for(String name : BlockSetsHelper.COLORS)
         {
-            blockStateModelGenerator.registerWoolAndCarpet(ModBlocks.SIMPLE_CARPET_BLOCKS.get(name), ModBlocks.SIMPLE_CARPETS.get(name));
+            blockStateModelGenerator.registerWoolAndCarpet(ModBlocks.SIMPLE_CARPET_BLOCKS.get(name), ModBlocks.SIMPLE_SHELVES.get(name));
         }
     }
 
