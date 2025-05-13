@@ -27,8 +27,8 @@ public class ModRecipeProvider extends FabricRecipeProvider
         for(String name : BlockSetsHelper.WOODS)
         {
             String blockName = (name.equals("crimson") || name.equals("warped")) ? "stem" : (name.equals("bamboo") ? "block" : "log");
-            Block block = Registry.BLOCK.get(Identifier.of("minecraft","stripped_"+name+"_"+blockName));
-            Block block1 = Registry.BLOCK.get(Identifier.of("minecraft",name+"_"+blockName));
+            Block block = Registry.BLOCK.get(new Identifier("minecraft","stripped_"+name+"_"+blockName));
+            Block block1 = Registry.BLOCK.get(new Identifier("minecraft",name+"_"+blockName));
             registerShelf(recipeExporter, ModBlocks.SHELVES.get(name), block1, block);
             registerStandingShelf(recipeExporter, ModBlocks.STANDING_SHELVES.get(name), block1, block);
             registerCeilingShelf(recipeExporter, ModBlocks.CEILING_SHELVES.get(name), Blocks.CHAIN, block);

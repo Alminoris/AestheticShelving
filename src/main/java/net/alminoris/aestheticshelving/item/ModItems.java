@@ -9,7 +9,7 @@ public class ModItems
 {
     private static Item registerItem(String name, Item item)
     {
-        return Registry.register(Registry.ITEM, Identifier.of(AestheticShelving.MOD_ID, name), item);
+        return Registry.register(Registry.ITEM, new Identifier(AestheticShelving.MOD_ID, name), item);
     }
 
     public static void registerItems()

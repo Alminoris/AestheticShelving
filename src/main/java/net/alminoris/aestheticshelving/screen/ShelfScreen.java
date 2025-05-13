@@ -19,7 +19,7 @@ public class ShelfScreen extends HandledScreen<ShelfScreenHandler>
     private final String NAME = Registry.BLOCK.getId(Objects.requireNonNull(handler.blockEntity.getWorld())
             .getBlockState(handler.blockEntity.getPos()).getBlock()).getPath();
 
-    private final Identifier TEXTURE = Identifier.of(AestheticShelving.MOD_ID, "textures/gui/"+ NAME +".png");;
+    private final Identifier TEXTURE = new Identifier(AestheticShelving.MOD_ID, "textures/gui/"+ NAME +".png");;
 
     private final Dictionary<String, Integer> WOOD_COLORS = new Hashtable<>()
     {{

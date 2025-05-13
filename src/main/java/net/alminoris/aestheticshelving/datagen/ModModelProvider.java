@@ -52,21 +52,21 @@ public class ModModelProvider extends FabricModelProvider
         ModJsonHelper.registerShelfBlockModel(ModJsonTemplates.SHELF_LEFT, name, modId+baseName, modId+legName, "left");
         ModJsonHelper.registerShelfBlockModel(ModJsonTemplates.SHELF_RIGHT, name, modId+baseName, modId+legName, "right");
         ModJsonHelper.createBlockstate(ModJsonTemplates.SHELF_BLOCKSTATE, name);
-        blockStateModelGenerator.registerParentedItemModel(block, Identifier.of(AestheticShelving.MOD_ID, "block/"+ name));
+        blockStateModelGenerator.registerParentedItemModel(block, new Identifier(AestheticShelving.MOD_ID, "block/"+ name));
     }
 
     public void registerStandingShelf(BlockStateModelGenerator blockStateModelGenerator, Block block, String modId, String name, String baseName, String legName)
     {
         ModJsonHelper.registerStandingShelfBlockModel(ModJsonTemplates.STANDING_SHELF, name, modId+baseName, modId+legName);
         ModJsonHelper.createBlockstate(ModJsonTemplates.BLOCKSTATE, name);
-        blockStateModelGenerator.registerParentedItemModel(block, Identifier.of(AestheticShelving.MOD_ID, "block/"+ name));
+        blockStateModelGenerator.registerParentedItemModel(block, new Identifier(AestheticShelving.MOD_ID, "block/"+ name));
     }
 
     public void registerCeilingShelf(BlockStateModelGenerator blockStateModelGenerator, Block block, String modId, String name, String baseName)
     {
         ModJsonHelper.registerCeilingShelfBlockModel(ModJsonTemplates.CEILING_SHELF, name, modId+baseName);
         ModJsonHelper.createBlockstate(ModJsonTemplates.BLOCKSTATE, name);
-        blockStateModelGenerator.registerParentedItemModel(block, Identifier.of(AestheticShelving.MOD_ID, "block/"+ name));
+        blockStateModelGenerator.registerParentedItemModel(block, new Identifier(AestheticShelving.MOD_ID, "block/"+ name));
     }
 
     @Override

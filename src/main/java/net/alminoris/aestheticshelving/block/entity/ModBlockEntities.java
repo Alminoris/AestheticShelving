@@ -15,17 +15,17 @@ import java.util.List;
 public class ModBlockEntities
 {
     public static final BlockEntityType<ShelfBlockEntity> SHELF_BLOCK_ENTITY =
-            Registry.register(Registry.BLOCK_ENTITY_TYPE, Identifier.of(AestheticShelving.MOD_ID, "shelf_be"),
+            Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(AestheticShelving.MOD_ID, "shelf_be"),
                     FabricBlockEntityTypeBuilder.create(ShelfBlockEntity::new,
                             toBlockArray(ModBlocks.SHELVES.elements())).build());
 
     public static final BlockEntityType<StandingShelfBlockEntity> STANDING_SHELF_BLOCK_ENTITY =
-            Registry.register(Registry.BLOCK_ENTITY_TYPE, Identifier.of(AestheticShelving.MOD_ID, "standing_shelf_be"),
+            Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(AestheticShelving.MOD_ID, "standing_shelf_be"),
                     FabricBlockEntityTypeBuilder.create(StandingShelfBlockEntity::new,
                             toBlockArray(ModBlocks.STANDING_SHELVES.elements())).build());
 
     public static final BlockEntityType<CeilingShelfBlockEntity> CEILING_SHELF_BLOCK_ENTITY =
-            Registry.register(Registry.BLOCK_ENTITY_TYPE, Identifier.of(AestheticShelving.MOD_ID, "ceiling_shelf_be"),
+            Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(AestheticShelving.MOD_ID, "ceiling_shelf_be"),
                     FabricBlockEntityTypeBuilder.create(CeilingShelfBlockEntity::new,
                             toBlockArray(ModBlocks.CEILING_SHELVES.elements())).build());
 

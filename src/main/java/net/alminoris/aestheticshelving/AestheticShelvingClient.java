@@ -9,8 +9,8 @@ import net.alminoris.aestheticshelving.screen.ModScreenHandlers;
 import net.alminoris.aestheticshelving.screen.ShelfScreen;
 import net.alminoris.aestheticshelving.screen.StandingShelfScreen;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
 public class AestheticShelvingClient implements ClientModInitializer
 {
@@ -21,8 +21,8 @@ public class AestheticShelvingClient implements ClientModInitializer
         HandledScreens.register(ModScreenHandlers.STANDING_SHELF_SCREEN_HANDLER, StandingShelfScreen::new);
         HandledScreens.register(ModScreenHandlers.CEILING_SHELF_SCREEN_HANDLER, CeilingShelfScreen::new);
 
-        BlockEntityRendererFactories.register(ModBlockEntities.SHELF_BLOCK_ENTITY, ShelfBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.STANDING_SHELF_BLOCK_ENTITY, StandingShelfBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.CEILING_SHELF_BLOCK_ENTITY, CeilingShelfBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(ModBlockEntities.SHELF_BLOCK_ENTITY, ShelfBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(ModBlockEntities.STANDING_SHELF_BLOCK_ENTITY, StandingShelfBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(ModBlockEntities.CEILING_SHELF_BLOCK_ENTITY, CeilingShelfBlockEntityRenderer::new);
     }
 }

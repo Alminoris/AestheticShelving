@@ -20,7 +20,7 @@ public class BlockSetsHelper
     public static final String[] WOODS =
             {
                     "oak", "birch", "spruce", "jungle", "acacia", "dark_oak",
-                    "crimson", "warped", "mangrove"
+                    "crimson", "warped"
             };
 
     public static final String[] EXTRA_WOODS_AN =

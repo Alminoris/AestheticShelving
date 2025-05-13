@@ -16,6 +16,7 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -86,7 +87,7 @@ public class ShelfBlockEntity extends BlockEntity implements ExtendedScreenHandl
     @Override
     public Text getDisplayName()
     {
-        return Text.translatable("block.aestheticshelving." + name);
+        return new TranslatableText("block.aestheticshelving." + name);
     }
 
     @Override
