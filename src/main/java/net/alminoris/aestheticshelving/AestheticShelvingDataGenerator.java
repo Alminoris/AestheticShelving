@@ -11,10 +11,8 @@ public class AestheticShelvingDataGenerator implements DataGeneratorEntrypoint
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator)
 	{
-		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-
-		pack.addProvider(ModRecipeProvider::new);
-		pack.addProvider(ModModelProvider::new);
-		pack.addProvider(ModLootTableProvider::new);
+		fabricDataGenerator.addProvider(ModModelProvider::new);
+		fabricDataGenerator.addProvider(ModRecipeProvider::new);
+		fabricDataGenerator.addProvider(ModLootTableProvider::new);
 	}
 }

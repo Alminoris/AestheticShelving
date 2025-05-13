@@ -104,7 +104,7 @@ public class ShelfBlock extends BlockWithEntity implements BlockEntityProvider
     public BlockState getPlacementState(ItemPlacementContext ctx)
     {
         boolean waterlogged = ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER;
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing()).with(WATERLOGGED, waterlogged);
+        return this.getDefaultState().with(FACING, ctx.getPlayer().getHorizontalFacing()).with(WATERLOGGED, waterlogged);
     }
 
     @Override
@@ -113,7 +113,7 @@ public class ShelfBlock extends BlockWithEntity implements BlockEntityProvider
     {
         if (state.get(WATERLOGGED))
         {
-            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+            world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 
         Direction facing = state.get(FACING);

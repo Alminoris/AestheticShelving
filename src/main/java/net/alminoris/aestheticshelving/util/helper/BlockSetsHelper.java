@@ -1,5 +1,7 @@
 package net.alminoris.aestheticshelving.util.helper;
 
+import net.alminoris.aestheticshelving.item.ModItemGroups;
+
 public class BlockSetsHelper
 {
     public static final String[] COLORS =
@@ -18,7 +20,7 @@ public class BlockSetsHelper
     public static final String[] WOODS =
             {
                     "oak", "birch", "spruce", "jungle", "acacia", "dark_oak",
-                    "crimson", "warped", "mangrove", "cherry", "bamboo"
+                    "crimson", "warped", "mangrove"
             };
 
     public static final String[] EXTRA_WOODS_AN =
@@ -34,10 +36,10 @@ public class BlockSetsHelper
 
     public static String[] getWoods()
     {
-        String[] combinedWoods = new String[WOODS.length + EXTRA_WOODS_AN.length + EXTRA_WOODS_WF.length];
+        String[] combinedWoods = new String[WOODS.length + ModItemGroups.EXTRA_WOODS_AN.size() + ModItemGroups.EXTRA_WOODS_WF.size()];
         System.arraycopy(WOODS, 0, combinedWoods, 0, WOODS.length);
-        System.arraycopy(EXTRA_WOODS_AN, 0, combinedWoods, WOODS.length, EXTRA_WOODS_AN.length);
-        System.arraycopy(EXTRA_WOODS_WF, 0, combinedWoods, WOODS.length + EXTRA_WOODS_AN.length, EXTRA_WOODS_WF.length);
+        System.arraycopy(ModItemGroups.EXTRA_WOODS_AN.toArray(new String[ModItemGroups.EXTRA_WOODS_AN.size()]), 0, combinedWoods, WOODS.length, ModItemGroups.EXTRA_WOODS_AN.size());
+        System.arraycopy(ModItemGroups.EXTRA_WOODS_WF.toArray(new String[ModItemGroups.EXTRA_WOODS_WF.size()]), 0, combinedWoods, WOODS.length+ModItemGroups.EXTRA_WOODS_AN.size(), ModItemGroups.EXTRA_WOODS_WF.size());
         return combinedWoods;
     }
 }

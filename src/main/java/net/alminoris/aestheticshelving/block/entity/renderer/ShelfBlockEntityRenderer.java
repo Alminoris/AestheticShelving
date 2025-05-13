@@ -9,12 +9,12 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
-import net.minecraft.client.render.model.json.ModelTransformationMode;
+import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.RotationAxis;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 
@@ -42,10 +42,10 @@ public class ShelfBlockEntityRenderer implements BlockEntityRenderer<ShelfBlockE
         // Центруємо і повертаємо полку згідно з facing
         matrices.translate(0.5, 0.5, 0.5); // центр блоку
         switch (facing) {
-            case NORTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(0));
-            case SOUTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
-            case WEST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
-            case EAST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
+            case NORTH -> matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(0));
+            case SOUTH -> matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180));
+            case WEST  -> matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(90));
+            case EAST  -> matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-90));
         }
         matrices.translate(-0.5, -0.5, -0.5); // повертаємо назад
 
@@ -55,11 +55,11 @@ public class ShelfBlockEntityRenderer implements BlockEntityRenderer<ShelfBlockE
             matrices.push();
             matrices.translate(f, 0.625f, 0.20f);
             matrices.scale(0.25f, 0.25f, 0.25f);
-            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(270));
+            matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(270));
 
-            itemRenderer.renderItem(stack, ModelTransformationMode.GUI,
+            itemRenderer.renderItem(stack, ModelTransformation.Mode.GUI,
                     getLightLevel(entity.getWorld(), entity.getPos()), OverlayTexture.DEFAULT_UV,
-                    matrices, vertexConsumers, entity.getWorld(), 1);
+                    matrices, vertexConsumers, 1);
 
             matrices.pop();
             f += 1f / stacks.size();

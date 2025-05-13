@@ -2,14 +2,13 @@ package net.alminoris.aestheticshelving.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.alminoris.aestheticshelving.AestheticShelving;
-import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -17,7 +16,7 @@ import java.util.Objects;
 
 public class CeilingShelfScreen extends HandledScreen<CeilingShelfScreenHandler>
 {
-    private final String NAME = Registries.BLOCK.getId(Objects.requireNonNull(handler.blockEntity.getWorld())
+    private final String NAME = Registry.BLOCK.getId(Objects.requireNonNull(handler.blockEntity.getWorld())
             .getBlockState(handler.blockEntity.getPos()).getBlock()).getPath();
 
     private final Identifier TEXTURE = Identifier.of(AestheticShelving.MOD_ID, "textures/gui/"+ NAME.split("_", 2)[1] +".png");;
@@ -81,7 +80,7 @@ public class CeilingShelfScreen extends HandledScreen<CeilingShelfScreenHandler>
     @Override
     protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY)
     {
-        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         RenderSystem.setShaderTexture(0, TEXTURE);
 

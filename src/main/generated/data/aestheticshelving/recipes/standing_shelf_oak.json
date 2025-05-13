@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "#": {
       "item": "minecraft:oak_log"
@@ -16,6 +15,5 @@
   "result": {
     "count": 4,
     "item": "aestheticshelving:standing_shelf_oak"
-  },
-  "show_notification": true
+  }
 }

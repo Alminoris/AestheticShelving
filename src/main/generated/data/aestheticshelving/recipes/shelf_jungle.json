@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "#": {
       "item": "minecraft:jungle_log"
@@ -15,6 +14,5 @@
   "result": {
     "count": 4,
     "item": "aestheticshelving:shelf_jungle"
-  },
-  "show_notification": true
+  }
 }
