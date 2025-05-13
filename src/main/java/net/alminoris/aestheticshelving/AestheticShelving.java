@@ -4,6 +4,7 @@ import net.alminoris.aestheticshelving.block.ModBlocks;
 import net.alminoris.aestheticshelving.block.entity.ModBlockEntities;
 import net.alminoris.aestheticshelving.item.ModItemGroups;
 import net.alminoris.aestheticshelving.item.ModItems;
+import net.alminoris.aestheticshelving.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -22,5 +23,6 @@ public class AestheticShelving implements ModInitializer
 		ModBlocks.registerBlocks();
 		ModItemGroups.registerItemGroups();
 		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
 	}
 }
