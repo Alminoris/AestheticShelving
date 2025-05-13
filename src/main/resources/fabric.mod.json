@@ -3,15 +3,15 @@
 	"id": "aestheticshelving",
 	"version": "${version}",
 	"name": "Aesthetic Shelving",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This mod is all about various decorative and functional shelves from all vanilla and some modded wood!",
 	"authors": [
-		"Me!"
+		"Almiris (Alminoris)"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/aestheticshelving/icon.png",
 	"environment": "*",
 	"entrypoints": {

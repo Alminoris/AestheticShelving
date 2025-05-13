@@ -1,6 +1,7 @@
 package net.alminoris.aestheticshelving;
 
 import net.alminoris.aestheticshelving.block.ModBlocks;
+import net.alminoris.aestheticshelving.block.entity.ModBlockEntities;
 import net.alminoris.aestheticshelving.item.ModItemGroups;
 import net.alminoris.aestheticshelving.item.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -20,5 +21,6 @@ public class AestheticShelving implements ModInitializer
 		ModItems.registerItems();
 		ModBlocks.registerBlocks();
 		ModItemGroups.registerItemGroups();
+		ModBlockEntities.registerBlockEntities();
 	}
 }

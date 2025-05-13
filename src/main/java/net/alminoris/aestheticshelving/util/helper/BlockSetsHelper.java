@@ -21,17 +21,23 @@ public class BlockSetsHelper
                     "crimson", "warped", "mangrove", "cherry", "bamboo"
             };
 
-    public static final String[] EXTRA_WOODS =
+    public static final String[] EXTRA_WOODS_AN =
             {
                     "hazelnut", "hornbeam", "hawthorn", "quince", "plum", "mango", "fig", "viburnum", "white_mulberry", "wild_cherry",
-                    "bauhinia", "pine", "fir", "cedar", "olive", "tamarisk"
+                    "bauhinia", "pine", "fir", "cedar", "araucaria", "juniper"
+            };
+
+    public static final String[] EXTRA_WOODS_WF =
+            {
+                    "olive", "tamarisk"
             };
 
     public static String[] getWoods()
     {
-        String[] combinedWoods = new String[WOODS.length + EXTRA_WOODS.length];
+        String[] combinedWoods = new String[WOODS.length + EXTRA_WOODS_AN.length + EXTRA_WOODS_WF.length];
         System.arraycopy(WOODS, 0, combinedWoods, 0, WOODS.length);
-        System.arraycopy(EXTRA_WOODS, 0, combinedWoods, WOODS.length, EXTRA_WOODS.length);
+        System.arraycopy(EXTRA_WOODS_AN, 0, combinedWoods, WOODS.length, EXTRA_WOODS_AN.length);
+        System.arraycopy(EXTRA_WOODS_WF, 0, combinedWoods, WOODS.length + EXTRA_WOODS_AN.length, EXTRA_WOODS_WF.length);
         return combinedWoods;
     }
 }

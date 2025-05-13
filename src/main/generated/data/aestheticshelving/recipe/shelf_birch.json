@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:birch_log"
+    },
+    "/": {
+      "item": "minecraft:stripped_birch_log"
+    }
+  },
+  "pattern": [
+    "#/#"
+  ],
+  "result": {
+    "count": 4,
+    "id": "aestheticshelving:shelf_birch"
+  }
+}

@@ -1,0 +1,47 @@
+package net.alminoris.aestheticshelving.block.entity;
+
+import net.alminoris.aestheticshelving.AestheticShelving;
+import net.alminoris.aestheticshelving.block.ModBlocks;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
+
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
+public class ModBlockEntities
+{
+    public static final BlockEntityType<ShelfBlockEntity> SHELF_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(AestheticShelving.MOD_ID, "shelf_be"),
+                    FabricBlockEntityTypeBuilder.create(ShelfBlockEntity::new,
+                            toBlockArray(ModBlocks.SHELVES.elements())).build());
+
+    public static final BlockEntityType<StandingShelfBlockEntity> STANDING_SHELF_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(AestheticShelving.MOD_ID, "standing_shelf_be"),
+                    FabricBlockEntityTypeBuilder.create(StandingShelfBlockEntity::new,
+                            toBlockArray(ModBlocks.STANDING_SHELVES.elements())).build());
+
+    public static final BlockEntityType<CeilingShelfBlockEntity> CEILING_SHELF_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(AestheticShelving.MOD_ID, "ceiling_shelf_be"),
+                    FabricBlockEntityTypeBuilder.create(CeilingShelfBlockEntity::new,
+                            toBlockArray(ModBlocks.CEILING_SHELVES.elements())).build());
+
+    public static void registerBlockEntities()
+    {
+
+    }
+
+    private static Block[] toBlockArray(Enumeration<Block> enumeration)
+    {
+        List<Block> blocks = new ArrayList<>();
+        while (enumeration.hasMoreElements())
+        {
+            blocks.add(enumeration.nextElement());
+        }
+        return blocks.toArray(new Block[0]);
+    }
+}

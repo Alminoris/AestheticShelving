@@ -4,6 +4,7 @@ import net.alminoris.aestheticshelving.AestheticShelving;
 import net.alminoris.aestheticshelving.block.ModBlocks;
 import net.alminoris.aestheticshelving.util.helper.BlockSetsHelper;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -25,18 +26,72 @@ public class ModItemGroups
                     "bauhinia", "pine", "fir", "cedar"
             };
 
-    public static final ItemGroup ASURF_TAB = Registry.register(Registries.ITEM_GROUP,
-            Identifier.of(AestheticShelving.MOD_ID, "asurftab"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.asurftab"))
-                    .icon(() -> new ItemStack(Blocks.RED_CARPET)).entries((displayContext, entries) ->
+    public static final ItemGroup ASHELF_TAB = Registry.register(Registries.ITEM_GROUP,
+            Identifier.of(AestheticShelving.MOD_ID, "ashelftab"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.ashelftab"))
+                    .icon(() -> new ItemStack(ModBlocks.SHELVES.get("oak"))).entries((displayContext, entries) ->
                     {
-                        for(String name : BlockSetsHelper.COLORS)
+                        for(String name : BlockSetsHelper.WOODS)
                         {
-                            entries.add(ModBlocks.SIMPLE_SHELVES.get(name));
+                            entries.add(ModBlocks.SHELVES.get(name));
                         }
-                        for(String name : BlockSetsHelper.COLORS)
+
+                        if (FabricLoader.getInstance().isModLoaded("arborealnature"))
                         {
-                            entries.add(ModBlocks.SIMPLE_CARPET_BLOCKS.get(name));
+                            for(String name : BlockSetsHelper.EXTRA_WOODS_AN)
+                            {
+                                entries.add(ModBlocks.SHELVES.get(name));
+                            }
+                        }
+
+                        if (FabricLoader.getInstance().isModLoaded("wildfields"))
+                        {
+                            for(String name : BlockSetsHelper.EXTRA_WOODS_WF)
+                            {
+                                entries.add(ModBlocks.SHELVES.get(name));
+                            }
+                        }
+
+                        for(String name : BlockSetsHelper.WOODS)
+                        {
+                            entries.add(ModBlocks.STANDING_SHELVES.get(name));
+                        }
+
+                        if (FabricLoader.getInstance().isModLoaded("arborealnature"))
+                        {
+                            for(String name : BlockSetsHelper.EXTRA_WOODS_AN)
+                            {
+                                entries.add(ModBlocks.STANDING_SHELVES.get(name));
+                            }
+                        }
+
+                        if (FabricLoader.getInstance().isModLoaded("wildfields"))
+                        {
+                            for(String name : BlockSetsHelper.EXTRA_WOODS_WF)
+                            {
+                                entries.add(ModBlocks.STANDING_SHELVES.get(name));
+                            }
+                        }
+
+                        for(String name : BlockSetsHelper.WOODS)
+                        {
+                            entries.add(ModBlocks.CEILING_SHELVES.get(name));
+                        }
+
+                        if (FabricLoader.getInstance().isModLoaded("arborealnature"))
+                        {
+                            for(String name : BlockSetsHelper.EXTRA_WOODS_AN)
+                            {
+                                entries.add(ModBlocks.CEILING_SHELVES.get(name));
+                            }
+                        }
+
+                        if (FabricLoader.getInstance().isModLoaded("wildfields"))
+                        {
+                            for(String name : BlockSetsHelper.EXTRA_WOODS_WF)
+                            {
+                                entries.add(ModBlocks.CEILING_SHELVES.get(name));
+                            }
                         }
                     }).build());
 

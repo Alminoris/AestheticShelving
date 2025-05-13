@@ -18,10 +18,11 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
     @Override
     public void generate()
     {
-        for(String name : BlockSetsHelper.COLORS)
+        for(String name : BlockSetsHelper.getWoods())
         {
-            addDrop(ModBlocks.SIMPLE_SHELVES.get(name));
-            addDrop(ModBlocks.SIMPLE_CARPET_BLOCKS.get(name));
+            addDrop(ModBlocks.SHELVES.get(name));
+            addDrop(ModBlocks.STANDING_SHELVES.get(name));
+            addDrop(ModBlocks.CEILING_SHELVES.get(name));
         }
     }
 }
