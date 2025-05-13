@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticshelving:shelf_warped"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

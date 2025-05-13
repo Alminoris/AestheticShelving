@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticshelving:shelf_cherry"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

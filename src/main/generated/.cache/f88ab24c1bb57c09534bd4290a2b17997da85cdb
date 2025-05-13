@@ -1,4 +1,4 @@
-// 1.20.1	2025-05-13T11:10:36.5305187	Aesthetic Shelving/Model Definitions
+// 1.19.4	2025-05-13T19:26:30.96884	Aesthetic Shelving/Model Definitions
 e595c901d138910e7603b5c099ef36e394cf1122 assets\aestheticshelving\models\item\shelf_mangrove.json
 33f88214dbe6d53618c8f28105f9c0da284d630e assets\aestheticshelving\models\item\ceiling_shelf_tamarisk.json
 c48872c5b5c059970875beced48788a9558168c4 assets\aestheticshelving\models\item\shelf_spruce.json
@@ -36,8 +36,8 @@ a52158812acedf4cc37b5a55397b0c00210e8f89 assets\aestheticshelving\models\item\st
 c97cd6b04d7aefca552877a1fc48a380e40477bf assets\aestheticshelving\models\item\standing_shelf_warped.json
 03cc23aad72cd4db0470f42ad0bb7e09943d4f70 assets\aestheticshelving\models\item\ceiling_shelf_pine.json
 45d286cdea394cf33bb360b81a1d5c41d0ebcbb0 assets\aestheticshelving\models\item\standing_shelf_oak.json
-44942d1bbac190f32db956430fd50b81ca59deb2 assets\aestheticshelving\models\item\standing_shelf_olive.json
 62790911cb48047d873d60e81d655c5b633d447b assets\aestheticshelving\models\item\ceiling_shelf_oak.json
+44942d1bbac190f32db956430fd50b81ca59deb2 assets\aestheticshelving\models\item\standing_shelf_olive.json
 3d66b18bfa60efaa9e6196bc4ebcc4bdb28c993e assets\aestheticshelving\models\item\standing_shelf_mangrove.json
 d2570d0e5552eeb2cdcc459bcff89cb2255bd5b4 assets\aestheticshelving\models\item\standing_shelf_cedar.json
 84675e71be07ab0f97eeb794f761936ca8e16695 assets\aestheticshelving\models\item\shelf_fig.json

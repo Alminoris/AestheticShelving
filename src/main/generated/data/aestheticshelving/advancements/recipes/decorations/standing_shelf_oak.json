@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticshelving:standing_shelf_oak"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -26,9 +26,7 @@ public class ModItemGroups
                     "bauhinia", "pine", "fir", "cedar"
             };
 
-    public static final ItemGroup ASHELF_TAB = Registry.register(Registries.ITEM_GROUP,
-            Identifier.of(AestheticShelving.MOD_ID, "ashelftab"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.ashelftab"))
+    public static final ItemGroup ASHELF_TAB = FabricItemGroup.builder(Identifier.of(AestheticShelving.MOD_ID, "ashelftab")).displayName(Text.translatable("itemgroup.ashelftab"))
                     .icon(() -> new ItemStack(ModBlocks.SHELVES.get("oak"))).entries((displayContext, entries) ->
                     {
                         for(String name : BlockSetsHelper.WOODS)
@@ -93,7 +91,7 @@ public class ModItemGroups
                                 entries.add(ModBlocks.CEILING_SHELVES.get(name));
                             }
                         }
-                    }).build());
+                    }).build();
 
     public static void registerItemGroups()
     {

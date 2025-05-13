@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticshelving:standing_shelf_crimson"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

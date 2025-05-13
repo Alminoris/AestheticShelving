@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticshelving:shelf_jungle"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticshelving:shelf_bamboo"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

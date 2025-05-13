@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticshelving:ceiling_shelf_birch"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

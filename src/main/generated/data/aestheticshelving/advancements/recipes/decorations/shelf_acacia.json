@@ -43,6 +43,5 @@
     "recipes": [
       "aestheticshelving:shelf_acacia"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
