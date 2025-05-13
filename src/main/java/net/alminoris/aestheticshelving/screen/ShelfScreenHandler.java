@@ -1,11 +1,11 @@
 package net.alminoris.aestheticshelving.screen;
 
 import net.alminoris.aestheticshelving.block.entity.ShelfBlockEntity;
-import net.alminoris.aestheticshelving.network.BlockPosPayload;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
@@ -15,9 +15,9 @@ public class ShelfScreenHandler extends ScreenHandler
     public final ShelfBlockEntity blockEntity;
 
     //Client
-    public ShelfScreenHandler(int syncId, PlayerInventory inventory, BlockPosPayload payload)
+    public ShelfScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf)
     {
-        this(syncId, inventory, (ShelfBlockEntity) inventory.player.getWorld().getBlockEntity(payload.pos()));
+        this(syncId, inventory, (ShelfBlockEntity) inventory.player.getWorld().getBlockEntity(buf.readBlockPos()));
     }
 
     //Server

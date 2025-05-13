@@ -18,6 +18,7 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -45,8 +46,6 @@ public class CeilingShelfBlock extends BlockWithEntity implements BlockEntityPro
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
-    public static final MapCodec<CeilingShelfBlock> CODEC = CeilingShelfBlock.createCodec(CeilingShelfBlock::new);
-
     public CeilingShelfBlock(Settings settings)
     {
         super(settings);
@@ -57,12 +56,6 @@ public class CeilingShelfBlock extends BlockWithEntity implements BlockEntityPro
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder)
     {
         builder.add(FACING, WATERLOGGED);
-    }
-
-    @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec()
-    {
-        return CODEC;
     }
 
     @Override
@@ -143,7 +136,7 @@ public class CeilingShelfBlock extends BlockWithEntity implements BlockEntityPro
     }
 
     @Override
-    protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved)
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved)
     {
         if (state.getBlock() != newState.getBlock())
         {
@@ -158,7 +151,7 @@ public class CeilingShelfBlock extends BlockWithEntity implements BlockEntityPro
     }
 
     @Override
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit)
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit)
     {
         if (!world.isClient)
         {
@@ -172,10 +165,16 @@ public class CeilingShelfBlock extends BlockWithEntity implements BlockEntityPro
     }
 
     @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
+    @Nullable
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
     {
-        return validateTicker(type, ModBlockEntities.CEILING_SHELF_BLOCK_ENTITY,
-                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+        return type == ModBlockEntities.CEILING_SHELF_BLOCK_ENTITY ? (world1, pos, state1, blockEntity) ->
+        {
+            if (blockEntity instanceof CeilingShelfBlockEntity shelfBlockEntity)
+            {
+                shelfBlockEntity.tick(world1, pos, state1);
+            }
+        } : null;
     }
 
     @Override

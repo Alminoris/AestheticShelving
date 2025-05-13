@@ -1,7 +1,6 @@
 package net.alminoris.aestheticshelving.screen;
 
 import net.alminoris.aestheticshelving.AestheticShelving;
-import net.alminoris.aestheticshelving.network.BlockPosPayload;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -12,15 +11,15 @@ public class ModScreenHandlers
 {
     public static final ScreenHandlerType<ShelfScreenHandler> SHELF_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(AestheticShelving.MOD_ID, "shelf"),
-                    new ExtendedScreenHandlerType<>(ShelfScreenHandler::new, BlockPosPayload.PACKET_CODEC));
+                    new ExtendedScreenHandlerType<>(ShelfScreenHandler::new));
 
     public static final ScreenHandlerType<StandingShelfScreenHandler> STANDING_SHELF_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(AestheticShelving.MOD_ID, "standing_shelf"),
-                    new ExtendedScreenHandlerType<>(StandingShelfScreenHandler::new, BlockPosPayload.PACKET_CODEC));
+                    new ExtendedScreenHandlerType<>(StandingShelfScreenHandler::new));
 
     public static final ScreenHandlerType<CeilingShelfScreenHandler> CEILING_SHELF_SCREEN_HANDLER =
             Registry.register(Registries.SCREEN_HANDLER, Identifier.of(AestheticShelving.MOD_ID, "ceiling_shelf"),
-                    new ExtendedScreenHandlerType<>(CeilingShelfScreenHandler::new, BlockPosPayload.PACKET_CODEC));
+                    new ExtendedScreenHandlerType<>(CeilingShelfScreenHandler::new));
 
     public static void registerScreenHandlers()
     {

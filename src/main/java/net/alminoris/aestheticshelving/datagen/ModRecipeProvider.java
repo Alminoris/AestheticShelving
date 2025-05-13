@@ -7,30 +7,29 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 public class ModRecipeProvider extends FabricRecipeProvider
 {
-    public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture)
+    public ModRecipeProvider(FabricDataOutput output)
     {
-        super(output, registriesFuture);
+        super(output);
     }
 
     @Override
-    public void generate(RecipeExporter recipeExporter)
+    public void generate(Consumer<RecipeJsonProvider> recipeExporter)
     {
         for(String name : BlockSetsHelper.WOODS)
         {
             String blockName = (name.equals("crimson") || name.equals("warped")) ? "stem" : (name.equals("bamboo") ? "block" : "log");
-            Block block = Registries.BLOCK.get(Identifier.ofVanilla("stripped_"+name+"_"+blockName));
-            Block block1 = Registries.BLOCK.get(Identifier.ofVanilla(name+"_"+blockName));
+            Block block = Registries.BLOCK.get(Identifier.of("minecraft","stripped_"+name+"_"+blockName));
+            Block block1 = Registries.BLOCK.get(Identifier.of("minecraft",name+"_"+blockName));
             registerShelf(recipeExporter, ModBlocks.SHELVES.get(name), block1, block);
             registerStandingShelf(recipeExporter, ModBlocks.STANDING_SHELVES.get(name), block1, block);
             registerCeilingShelf(recipeExporter, ModBlocks.CEILING_SHELVES.get(name), Blocks.CHAIN, block);
@@ -61,7 +60,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
         }
     }
 
-    private void registerShelf(RecipeExporter recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerShelf(Consumer<RecipeJsonProvider> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, output, 4)
                 .pattern("#/#")
@@ -72,7 +71,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .offerTo(recipeExporter);
     }
 
-    private void registerStandingShelf(RecipeExporter recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerStandingShelf(Consumer<RecipeJsonProvider> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, output, 4)
                 .pattern("/#")
@@ -84,7 +83,7 @@ public class ModRecipeProvider extends FabricRecipeProvider
                 .offerTo(recipeExporter);
     }
 
-    private void registerCeilingShelf(RecipeExporter recipeExporter, Block output, Block ing1, Block ing2)
+    private void registerCeilingShelf(Consumer<RecipeJsonProvider> recipeExporter, Block output, Block ing1, Block ing2)
     {
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, output, 4)
                 .pattern("# #")

@@ -5,7 +5,7 @@ public class ModJsonTemplates
     public static String SHAPED_RECIPE = """
             {
               "type": "minecraft:crafting_shaped",
-              "category": "building",
+              "category": "misc",
               "key": {
                 "#": {
                   "item": "INGREDIENT1_NAME"
@@ -21,7 +21,7 @@ public class ModJsonTemplates
               ],
               "result": {
                 "count": COUNT,
-                "id": "aestheticshelving:OUTPUT_NAME"
+                "item": "aestheticshelving:OUTPUT_NAME"
               }
             }
             """;

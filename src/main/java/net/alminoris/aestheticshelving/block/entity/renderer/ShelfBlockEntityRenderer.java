@@ -2,8 +2,6 @@ package net.alminoris.aestheticshelving.block.entity.renderer;
 
 import net.alminoris.aestheticshelving.block.custom.ShelfBlock;
 import net.alminoris.aestheticshelving.block.entity.ShelfBlockEntity;
-import net.minecraft.block.FacingBlock;
-import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.OverlayTexture;
@@ -44,10 +42,10 @@ public class ShelfBlockEntityRenderer implements BlockEntityRenderer<ShelfBlockE
         // Центруємо і повертаємо полку згідно з facing
         matrices.translate(0.5, 0.5, 0.5); // центр блоку
         switch (facing) {
-            case Direction.NORTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(0));
-            case Direction.SOUTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
-            case Direction.WEST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
-            case Direction.EAST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
+            case NORTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(0));
+            case SOUTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
+            case WEST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
+            case EAST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
         }
         matrices.translate(-0.5, -0.5, -0.5); // повертаємо назад
 
