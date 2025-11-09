@@ -16,7 +16,7 @@ import static net.alminoris.aestheticshelving.util.helper.BlockSetsHelper.getWoo
 public class CeilingShelfScreen extends HandledScreen<CeilingShelfScreenHandler>
 {
     private final Identifier TEXTURE = Identifier.of(AestheticShelving.MOD_ID,
-            "textures/gui/"+ getWoodName(ModBlocks.SHELVES, handler.blockEntity) +".png");
+            "textures/gui/"+ getWoodName(ModBlocks.CEILING_SHELVES, handler.blockEntity) +".png");
 
     public CeilingShelfScreen(CeilingShelfScreenHandler handler, PlayerInventory inventory, Text title)
     {
