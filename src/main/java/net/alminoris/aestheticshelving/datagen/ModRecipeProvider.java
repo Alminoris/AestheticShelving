@@ -59,6 +59,54 @@ public class ModRecipeProvider extends FabricRecipeProvider
             ModJsonHelper.createShapedRecipe("ceiling_shelf_" + name, "4", "minecraft:chain", "wildfields:stripped_" + name + "_log",
                     "\"# #\",", "\"///\"", "");
         }
+
+        for(String name : BlockSetsHelper.WT_WOOD_NAMES)
+        {
+            ModJsonHelper.createShapedRecipe("shelf_" + name, "4", "whisperleaftrees:" + name + "_log", "whisperleaftrees:stripped_" + name + "_log",
+                    "\"#/#\"", "", "");
+
+            ModJsonHelper.createShapedRecipe("standing_shelf_" + name, "4", "whisperleaftrees:" + name + "_log", "whisperleaftrees:stripped_" + name + "_log",
+                    "\"/#\",", "\"/#\"", "");
+
+            ModJsonHelper.createShapedRecipe("ceiling_shelf_" + name, "4", "minecraft:chain", "whisperleaftrees:stripped_" + name + "_log",
+                    "\"# #\",", "\"///\"", "");
+        }
+
+        for(String name : BlockSetsHelper.ST_WOOD_NAMES)
+        {
+            ModJsonHelper.createShapedRecipe("shelf_" + name, "4", "silverwoodtrees:" + name + "_log", "silverwoodtrees:stripped_" + name + "_log",
+                    "\"#/#\"", "", "");
+
+            ModJsonHelper.createShapedRecipe("standing_shelf_" + name, "4", "silverwoodtrees:" + name + "_log", "silverwoodtrees:stripped_" + name + "_log",
+                    "\"/#\",", "\"/#\"", "");
+
+            ModJsonHelper.createShapedRecipe("ceiling_shelf_" + name, "4", "minecraft:chain", "silverwoodtrees:stripped_" + name + "_log",
+                    "\"# #\",", "\"///\"", "");
+        }
+
+        for(String name : BlockSetsHelper.MT_WOOD_NAMES)
+        {
+            ModJsonHelper.createShapedRecipe("shelf_" + name, "4", "missingtrees:" + name + "_log", "missingtrees:stripped_" + name + "_log",
+                    "\"#/#\"", "", "");
+
+            ModJsonHelper.createShapedRecipe("standing_shelf_" + name, "4", "missingtrees:" + name + "_log", "missingtrees:stripped_" + name + "_log",
+                    "\"/#\",", "\"/#\"", "");
+
+            ModJsonHelper.createShapedRecipe("ceiling_shelf_" + name, "4", "minecraft:chain", "missingtrees:stripped_" + name + "_log",
+                    "\"# #\",", "\"///\"", "");
+        }
+
+        for(String name : BlockSetsHelper.NSS_WOOD_NAMES)
+        {
+            ModJsonHelper.createShapedRecipe("shelf_" + name, "4", "natures_spirit:" + name.replace("_nss", "") + "_log", "natures_spirit:stripped_" + name.replace("_nss", "") + "_log",
+                    "\"#/#\"", "", "");
+
+            ModJsonHelper.createShapedRecipe("standing_shelf_" + name, "4", "natures_spirit:" + name.replace("_nss", "") + "_log", "natures_spirit:stripped_" + name.replace("_nss", "") + "_log",
+                    "\"/#\",", "\"/#\"", "");
+
+            ModJsonHelper.createShapedRecipe("ceiling_shelf_" + name, "4", "minecraft:chain", "natures_spirit:stripped_" + name.replace("_nss", "") + "_log",
+                    "\"# #\",", "\"///\"", "");
+        }
     }
 
     private void registerShelf(RecipeExporter recipeExporter, Block output, Block ing1, Block ing2)
