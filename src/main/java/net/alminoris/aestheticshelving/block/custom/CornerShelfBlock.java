@@ -2,7 +2,7 @@ package net.alminoris.aestheticshelving.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.alminoris.aestheticshelving.block.entity.ModBlockEntities;
-import net.alminoris.aestheticshelving.block.entity.StandingShelfBlockEntity;
+import net.alminoris.aestheticshelving.block.entity.CornerShelfBlockEntity;
 import net.alminoris.aestheticshelving.util.helper.VoxelShapeHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -34,7 +34,8 @@ import java.util.List;
 
 public class CornerShelfBlock extends BlockWithEntity implements BlockEntityProvider
 {
-    private static final VoxelShape SHAPE = Block.createCuboidShape(2, 0, 2, 14, 16, 14);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(2, 7, 8, 16, 9, 16);
+    private static final VoxelShape SHAPE1 = Block.createCuboidShape(8, 7, 2, 16, 9, 16);
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
@@ -72,6 +73,7 @@ public class CornerShelfBlock extends BlockWithEntity implements BlockEntityProv
 
         List<Box> boxes = new ArrayList<>();
         boxes.add(SHAPE.getBoundingBox());
+        boxes.add(SHAPE1.getBoundingBox());
 
         return VoxelShapeHelper.rotateShape(boxes, direction);
     }
@@ -85,7 +87,7 @@ public class CornerShelfBlock extends BlockWithEntity implements BlockEntityProv
     @Override
     public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state)
     {
-        return new StandingShelfBlockEntity(pos, state);
+        return new CornerShelfBlockEntity(pos, state);
     }
 
     @Override
@@ -120,9 +122,9 @@ public class CornerShelfBlock extends BlockWithEntity implements BlockEntityProv
         if (state.getBlock() != newState.getBlock())
         {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof StandingShelfBlockEntity)
+            if (blockEntity instanceof CornerShelfBlockEntity)
             {
-                ItemScatterer.spawn(world, pos, (StandingShelfBlockEntity)blockEntity);
+                ItemScatterer.spawn(world, pos, (CornerShelfBlockEntity)blockEntity);
                 world.updateComparators(pos,this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -134,7 +136,7 @@ public class CornerShelfBlock extends BlockWithEntity implements BlockEntityProv
     {
         if (!world.isClient)
         {
-            NamedScreenHandlerFactory screenHandlerFactory = ((StandingShelfBlockEntity) world.getBlockEntity(pos));
+            NamedScreenHandlerFactory screenHandlerFactory = ((CornerShelfBlockEntity) world.getBlockEntity(pos));
 
             if (screenHandlerFactory != null)
                 player.openHandledScreen(screenHandlerFactory);
@@ -146,7 +148,7 @@ public class CornerShelfBlock extends BlockWithEntity implements BlockEntityProv
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
     {
-        return validateTicker(type, ModBlockEntities.STANDING_SHELF_BLOCK_ENTITY,
+        return validateTicker(type, ModBlockEntities.CORNER_SHELF_BLOCK_ENTITY,
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 

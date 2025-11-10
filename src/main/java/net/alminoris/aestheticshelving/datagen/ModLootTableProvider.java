@@ -23,6 +23,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider
             addDrop(ModBlocks.SHELVES.get(name));
             addDrop(ModBlocks.STANDING_SHELVES.get(name));
             addDrop(ModBlocks.CEILING_SHELVES.get(name));
+            addDrop(ModBlocks.CORNER_SHELVES.get(name));
+            addDrop(ModBlocks.LADDER_SHELVES.get(name));
+            addDrop(ModBlocks.TOWER_SHELVES.get(name));
         }
     }
 }

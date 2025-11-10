@@ -27,6 +27,9 @@ public class ModLanguageProviderUkUa extends FabricLanguageProvider
         woodObjects.put("shelf_", "Полиця з %s");
         woodObjects.put("standing_shelf_", "Стояча полиця з %s");
         woodObjects.put("ceiling_shelf_", "Стельова полиця з %s");
+        woodObjects.put("corner_shelf_", "Кутова полиця з %s");
+        woodObjects.put("ladder_shelf_", "Полиця-драбина з %s");
+        woodObjects.put("tower_shelf_", "Полиця-вежа з %s");
 
         Map<String, String> stoneMaterials = new LinkedHashMap<>();
         stoneMaterials.put("stone", "каменю");

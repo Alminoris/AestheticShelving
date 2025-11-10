@@ -2,7 +2,7 @@ package net.alminoris.aestheticshelving.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.alminoris.aestheticshelving.block.entity.ModBlockEntities;
-import net.alminoris.aestheticshelving.block.entity.StandingShelfBlockEntity;
+import net.alminoris.aestheticshelving.block.entity.LadderShelfBlockEntity;
 import net.alminoris.aestheticshelving.util.helper.VoxelShapeHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -34,7 +34,17 @@ import java.util.List;
 
 public class LadderShelfBlock extends BlockWithEntity implements BlockEntityProvider
 {
-    private static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 0, 15, 32, 13);
+    private static final VoxelShape LEFT = Block.createCuboidShape(0, 0, 3, 2, 32, 16);
+
+    private static final VoxelShape RIGHT = Block.createCuboidShape(14, 0, 3, 16, 32, 16);
+
+    private static final VoxelShape FIRST = Block.createCuboidShape(2, 3, 3.25D, 14, 5, 16);
+
+    private static final VoxelShape SECOND = Block.createCuboidShape(2, 10, 6D, 14, 12, 16);
+
+    private static final VoxelShape THIRD = Block.createCuboidShape(2, 17, 9D, 14, 19, 16);
+
+    private static final VoxelShape FOURTH = Block.createCuboidShape(2, 24, 12D, 14, 26, 16);
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
@@ -71,7 +81,12 @@ public class LadderShelfBlock extends BlockWithEntity implements BlockEntityProv
         Direction direction = state.get(FACING);
 
         List<Box> boxes = new ArrayList<>();
-        boxes.add(SHAPE.getBoundingBox());
+        boxes.add(LEFT.getBoundingBox());
+        boxes.add(RIGHT.getBoundingBox());
+        boxes.add(FIRST.getBoundingBox());
+        boxes.add(SECOND.getBoundingBox());
+        boxes.add(THIRD.getBoundingBox());
+        boxes.add(FOURTH.getBoundingBox());
 
         return VoxelShapeHelper.rotateShape(boxes, direction);
     }
@@ -85,7 +100,7 @@ public class LadderShelfBlock extends BlockWithEntity implements BlockEntityProv
     @Override
     public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state)
     {
-        return new StandingShelfBlockEntity(pos, state);
+        return new LadderShelfBlockEntity(pos, state);
     }
 
     @Override
@@ -120,9 +135,9 @@ public class LadderShelfBlock extends BlockWithEntity implements BlockEntityProv
         if (state.getBlock() != newState.getBlock())
         {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof StandingShelfBlockEntity)
+            if (blockEntity instanceof LadderShelfBlockEntity)
             {
-                ItemScatterer.spawn(world, pos, (StandingShelfBlockEntity)blockEntity);
+                ItemScatterer.spawn(world, pos, (LadderShelfBlockEntity)blockEntity);
                 world.updateComparators(pos,this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -134,7 +149,7 @@ public class LadderShelfBlock extends BlockWithEntity implements BlockEntityProv
     {
         if (!world.isClient)
         {
-            NamedScreenHandlerFactory screenHandlerFactory = ((StandingShelfBlockEntity) world.getBlockEntity(pos));
+            NamedScreenHandlerFactory screenHandlerFactory = ((LadderShelfBlockEntity) world.getBlockEntity(pos));
 
             if (screenHandlerFactory != null)
                 player.openHandledScreen(screenHandlerFactory);
@@ -146,7 +161,7 @@ public class LadderShelfBlock extends BlockWithEntity implements BlockEntityProv
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
     {
-        return validateTicker(type, ModBlockEntities.STANDING_SHELF_BLOCK_ENTITY,
+        return validateTicker(type, ModBlockEntities.LADDER_SHELF_BLOCK_ENTITY,
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 

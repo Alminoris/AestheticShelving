@@ -24,6 +24,9 @@ public class ModItemGroups
                             entries.add(ModBlocks.SHELVES.get(name));
                             entries.add(ModBlocks.STANDING_SHELVES.get(name));
                             entries.add(ModBlocks.CEILING_SHELVES.get(name));
+                            entries.add(ModBlocks.CORNER_SHELVES.get(name));
+                            entries.add(ModBlocks.LADDER_SHELVES.get(name));
+                            entries.add(ModBlocks.TOWER_SHELVES.get(name));
                         }
 
                         if (FabricLoader.getInstance().isModLoaded("arborealnature"))
@@ -33,6 +36,9 @@ public class ModItemGroups
                                 entries.add(ModBlocks.SHELVES.get(name));
                                 entries.add(ModBlocks.STANDING_SHELVES.get(name));
                                 entries.add(ModBlocks.CEILING_SHELVES.get(name));
+                                entries.add(ModBlocks.CORNER_SHELVES.get(name));
+                                entries.add(ModBlocks.LADDER_SHELVES.get(name));
+                                entries.add(ModBlocks.TOWER_SHELVES.get(name));
                             }
                         }
 
@@ -43,6 +49,9 @@ public class ModItemGroups
                                 entries.add(ModBlocks.SHELVES.get(name));
                                 entries.add(ModBlocks.STANDING_SHELVES.get(name));
                                 entries.add(ModBlocks.CEILING_SHELVES.get(name));
+                                entries.add(ModBlocks.CORNER_SHELVES.get(name));
+                                entries.add(ModBlocks.LADDER_SHELVES.get(name));
+                                entries.add(ModBlocks.TOWER_SHELVES.get(name));
                             }
                         }
 
@@ -53,6 +62,9 @@ public class ModItemGroups
                                 entries.add(ModBlocks.SHELVES.get(name));
                                 entries.add(ModBlocks.STANDING_SHELVES.get(name));
                                 entries.add(ModBlocks.CEILING_SHELVES.get(name));
+                                entries.add(ModBlocks.CORNER_SHELVES.get(name));
+                                entries.add(ModBlocks.LADDER_SHELVES.get(name));
+                                entries.add(ModBlocks.TOWER_SHELVES.get(name));
                             }
                         }
 
@@ -63,6 +75,9 @@ public class ModItemGroups
                                 entries.add(ModBlocks.SHELVES.get(name));
                                 entries.add(ModBlocks.STANDING_SHELVES.get(name));
                                 entries.add(ModBlocks.CEILING_SHELVES.get(name));
+                                entries.add(ModBlocks.CORNER_SHELVES.get(name));
+                                entries.add(ModBlocks.LADDER_SHELVES.get(name));
+                                entries.add(ModBlocks.TOWER_SHELVES.get(name));
                             }
                         }
 
@@ -73,6 +88,9 @@ public class ModItemGroups
                                 entries.add(ModBlocks.SHELVES.get(name));
                                 entries.add(ModBlocks.STANDING_SHELVES.get(name));
                                 entries.add(ModBlocks.CEILING_SHELVES.get(name));
+                                entries.add(ModBlocks.CORNER_SHELVES.get(name));
+                                entries.add(ModBlocks.LADDER_SHELVES.get(name));
+                                entries.add(ModBlocks.TOWER_SHELVES.get(name));
                             }
                         }
 
@@ -83,6 +101,9 @@ public class ModItemGroups
                                 entries.add(ModBlocks.SHELVES.get(name));
                                 entries.add(ModBlocks.STANDING_SHELVES.get(name));
                                 entries.add(ModBlocks.CEILING_SHELVES.get(name));
+                                entries.add(ModBlocks.CORNER_SHELVES.get(name));
+                                entries.add(ModBlocks.LADDER_SHELVES.get(name));
+                                entries.add(ModBlocks.TOWER_SHELVES.get(name));
                             }
                         }
 
