@@ -2,7 +2,7 @@ package net.alminoris.aestheticshelving.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.alminoris.aestheticshelving.block.entity.ModBlockEntities;
-import net.alminoris.aestheticshelving.block.entity.StandingShelfBlockEntity;
+import net.alminoris.aestheticshelving.block.entity.TowerShelfBlockEntity;
 import net.alminoris.aestheticshelving.util.helper.VoxelShapeHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -85,7 +85,7 @@ public class TowerShelfBlock extends BlockWithEntity implements BlockEntityProvi
     @Override
     public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state)
     {
-        return new StandingShelfBlockEntity(pos, state);
+        return new TowerShelfBlockEntity(pos, state);
     }
 
     @Override
@@ -120,9 +120,9 @@ public class TowerShelfBlock extends BlockWithEntity implements BlockEntityProvi
         if (state.getBlock() != newState.getBlock())
         {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof StandingShelfBlockEntity)
+            if (blockEntity instanceof TowerShelfBlockEntity)
             {
-                ItemScatterer.spawn(world, pos, (StandingShelfBlockEntity)blockEntity);
+                ItemScatterer.spawn(world, pos, (TowerShelfBlockEntity)blockEntity);
                 world.updateComparators(pos,this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -134,7 +134,7 @@ public class TowerShelfBlock extends BlockWithEntity implements BlockEntityProvi
     {
         if (!world.isClient)
         {
-            NamedScreenHandlerFactory screenHandlerFactory = ((StandingShelfBlockEntity) world.getBlockEntity(pos));
+            NamedScreenHandlerFactory screenHandlerFactory = ((TowerShelfBlockEntity) world.getBlockEntity(pos));
 
             if (screenHandlerFactory != null)
                 player.openHandledScreen(screenHandlerFactory);
@@ -146,7 +146,7 @@ public class TowerShelfBlock extends BlockWithEntity implements BlockEntityProvi
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
     {
-        return validateTicker(type, ModBlockEntities.STANDING_SHELF_BLOCK_ENTITY,
+        return validateTicker(type, ModBlockEntities.TOWER_SHELF_BLOCK_ENTITY,
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 

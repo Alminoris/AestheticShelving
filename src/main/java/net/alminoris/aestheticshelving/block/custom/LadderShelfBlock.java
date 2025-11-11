@@ -34,17 +34,15 @@ import java.util.List;
 
 public class LadderShelfBlock extends BlockWithEntity implements BlockEntityProvider
 {
-    private static final VoxelShape LEFT = Block.createCuboidShape(0, 0, 3, 2, 32, 16);
+    private static final VoxelShape BACK = Block.createCuboidShape(2, 0, 0, 14, 28D, 1);
 
-    private static final VoxelShape RIGHT = Block.createCuboidShape(14, 0, 3, 16, 32, 16);
+    private static final VoxelShape FIRST = Block.createCuboidShape(2, 3, 0, 14, 4.5D, 12.75D);
 
-    private static final VoxelShape FIRST = Block.createCuboidShape(2, 3, 3.25D, 14, 5, 16);
+    private static final VoxelShape SECOND = Block.createCuboidShape(2, 10, 0, 14, 11.5D, 10);
 
-    private static final VoxelShape SECOND = Block.createCuboidShape(2, 10, 6D, 14, 12, 16);
+    private static final VoxelShape THIRD = Block.createCuboidShape(2, 17, 0, 14, 18.5D, 7);
 
-    private static final VoxelShape THIRD = Block.createCuboidShape(2, 17, 9D, 14, 19, 16);
-
-    private static final VoxelShape FOURTH = Block.createCuboidShape(2, 24, 12D, 14, 26, 16);
+    private static final VoxelShape FOURTH = Block.createCuboidShape(2, 24, 0, 14, 25.5D, 4);
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
@@ -81,8 +79,7 @@ public class LadderShelfBlock extends BlockWithEntity implements BlockEntityProv
         Direction direction = state.get(FACING);
 
         List<Box> boxes = new ArrayList<>();
-        boxes.add(LEFT.getBoundingBox());
-        boxes.add(RIGHT.getBoundingBox());
+        boxes.add(BACK.getBoundingBox());
         boxes.add(FIRST.getBoundingBox());
         boxes.add(SECOND.getBoundingBox());
         boxes.add(THIRD.getBoundingBox());

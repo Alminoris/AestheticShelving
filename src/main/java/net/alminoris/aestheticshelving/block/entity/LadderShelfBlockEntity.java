@@ -23,14 +23,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 public class LadderShelfBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory
 {
-    private final DefaultedList<ItemStack> INVENTORY = DefaultedList.ofSize(4, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> INVENTORY = DefaultedList.ofSize(14, ItemStack.EMPTY);
     private String name;
 
     public LadderShelfBlockEntity(BlockPos pos, BlockState state)
@@ -38,27 +35,30 @@ public class LadderShelfBlockEntity extends BlockEntity implements ExtendedScree
         super(ModBlockEntities.LADDER_SHELF_BLOCK_ENTITY, pos, state);
     }
 
-    public Dictionary<Integer, List<ItemStack>> getRenderStack()
+    public TreeMap<Integer, List<ItemStack>> getRenderStack()
     {
-        Dictionary<Integer, List<ItemStack>> result = new Hashtable<>();
+        TreeMap<Integer, List<ItemStack>> result = new TreeMap<>();
+
         List<ItemStack> res1 = new ArrayList<>();
         List<ItemStack> res2 = new ArrayList<>();
-        for(int i = 0; i < INVENTORY.size(); i++)
+        List<ItemStack> res3 = new ArrayList<>();
+        List<ItemStack> res4 = new ArrayList<>();
+
+        for (int i = 0; i < INVENTORY.size(); i++)
         {
-            if (i < 2)
-            {
-                if (!this.getStack(i).isEmpty())
-                    res1.add(this.getStack(i));
-            }
-            else
-            {
-                if (!this.getStack(i).isEmpty())
-                    res2.add(this.getStack(i));
-            }
+            ItemStack stack = this.getStack(i);
+            if (stack.isEmpty()) continue;
+
+            if (i < 2) res1.add(stack);
+            else if (i < 5) res2.add(stack);
+            else if (i < 9) res3.add(stack);
+            else res4.add(stack);
         }
 
         result.put(0, res1);
         result.put(1, res2);
+        result.put(2, res3);
+        result.put(3, res4);
 
         return result;
     }
@@ -74,7 +74,7 @@ public class LadderShelfBlockEntity extends BlockEntity implements ExtendedScree
     @Override
     public void markDirty()
     {
-        world.updateListeners(pos, getCachedState(), getCachedState(), 4);
+        world.updateListeners(pos, getCachedState(), getCachedState(), 14);
         super.markDirty();
     }
 

@@ -32,11 +32,11 @@ public class ModModelProvider extends FabricModelProvider
                         "shelf_"+name, "stripped_"+name+"_log", name+"_log");
                 registerStandingShelf(blockStateModelGenerator,  ModBlocks.STANDING_SHELVES.get(name),"aestheticshelving:block/",
                         "standing_shelf_"+name, "stripped_"+name+"_log", name+"_log");
-                registerStandingShelf(blockStateModelGenerator,  ModBlocks.CORNER_SHELVES.get(name),"aestheticshelving:block/",
+                registerCornerShelf(blockStateModelGenerator,  ModBlocks.CORNER_SHELVES.get(name),"aestheticshelving:block/",
                         "corner_shelf_"+name, "stripped_"+name+"_log", name+"_log");
-                registerStandingShelf(blockStateModelGenerator,  ModBlocks.TOWER_SHELVES.get(name),"aestheticshelving:block/",
+                registerTowerShelf(blockStateModelGenerator,  ModBlocks.TOWER_SHELVES.get(name),"aestheticshelving:block/",
                         "tower_shelf_"+name, "stripped_"+name+"_log", name+"_log");
-                registerStandingShelf(blockStateModelGenerator,  ModBlocks.LADDER_SHELVES.get(name),"aestheticshelving:block/",
+                registerLadderShelf(blockStateModelGenerator,  ModBlocks.LADDER_SHELVES.get(name),"aestheticshelving:block/",
                         "ladder_shelf_"+name, "stripped_"+name+"_log", name+"_log");
                 registerCeilingShelf(blockStateModelGenerator,  ModBlocks.CEILING_SHELVES.get(name),"aestheticshelving:block/",
                         "ceiling_shelf_"+name, "stripped_"+name+"_log");
@@ -48,11 +48,11 @@ public class ModModelProvider extends FabricModelProvider
                         "shelf_"+name, "stripped_"+name+"_"+logName, name+"_"+logName);
                 registerStandingShelf(blockStateModelGenerator,  ModBlocks.STANDING_SHELVES.get(name),"minecraft:block/",
                         "standing_shelf_"+name, "stripped_"+name+"_"+logName, name+"_"+logName);
-                registerStandingShelf(blockStateModelGenerator,  ModBlocks.CORNER_SHELVES.get(name),"minecraft:block/",
+                registerCornerShelf(blockStateModelGenerator,  ModBlocks.CORNER_SHELVES.get(name),"minecraft:block/",
                         "corner_shelf_"+name, "stripped_"+name+"_"+logName, name+"_"+logName);
-                registerStandingShelf(blockStateModelGenerator,  ModBlocks.TOWER_SHELVES.get(name),"minecraft:block/",
+                registerTowerShelf(blockStateModelGenerator,  ModBlocks.TOWER_SHELVES.get(name),"minecraft:block/",
                         "tower_shelf_"+name, "stripped_"+name+"_"+logName, name+"_"+logName);
-                registerStandingShelf(blockStateModelGenerator,  ModBlocks.LADDER_SHELVES.get(name),"minecraft:block/",
+                registerLadderShelf(blockStateModelGenerator,  ModBlocks.LADDER_SHELVES.get(name),"minecraft:block/",
                         "ladder_shelf_"+name, "stripped_"+name+"_"+logName, name+"_"+logName);
                 registerCeilingShelf(blockStateModelGenerator,  ModBlocks.CEILING_SHELVES.get(name),"minecraft:block/",
                         "ceiling_shelf_"+name, "stripped_"+name+"_"+logName);

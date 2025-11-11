@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:oak_log"
+    },
+    "/": {
+      "item": "minecraft:stripped_oak_log"
+    }
+  },
+  "pattern": [
+    "#/",
+    " #"
+  ],
+  "result": {
+    "count": 4,
+    "id": "aestheticshelving:corner_shelf_oak"
+  }
+}

@@ -23,14 +23,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 public class TowerShelfBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory
 {
-    private final DefaultedList<ItemStack> INVENTORY = DefaultedList.ofSize(4, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> INVENTORY = DefaultedList.ofSize(12, ItemStack.EMPTY);
     private String name;
 
     public TowerShelfBlockEntity(BlockPos pos, BlockState state)
@@ -38,27 +35,27 @@ public class TowerShelfBlockEntity extends BlockEntity implements ExtendedScreen
         super(ModBlockEntities.TOWER_SHELF_BLOCK_ENTITY, pos, state);
     }
 
-    public Dictionary<Integer, List<ItemStack>> getRenderStack()
+    public TreeMap<Integer, List<ItemStack>> getRenderStack()
     {
-        Dictionary<Integer, List<ItemStack>> result = new Hashtable<>();
+        TreeMap<Integer, List<ItemStack>> result = new TreeMap<>();
+
         List<ItemStack> res1 = new ArrayList<>();
         List<ItemStack> res2 = new ArrayList<>();
-        for(int i = 0; i < INVENTORY.size(); i++)
+        List<ItemStack> res3 = new ArrayList<>();
+
+        for (int i = 0; i < INVENTORY.size(); i++)
         {
-            if (i < 2)
-            {
-                if (!this.getStack(i).isEmpty())
-                    res1.add(this.getStack(i));
-            }
-            else
-            {
-                if (!this.getStack(i).isEmpty())
-                    res2.add(this.getStack(i));
-            }
+            ItemStack stack = this.getStack(i);
+            if (stack.isEmpty()) continue;
+
+            if (i < 4) res1.add(stack);
+            else if (i < 8) res2.add(stack);
+            else res3.add(stack);
         }
 
         result.put(0, res1);
         result.put(1, res2);
+        result.put(2, res3);
 
         return result;
     }
@@ -74,7 +71,7 @@ public class TowerShelfBlockEntity extends BlockEntity implements ExtendedScreen
     @Override
     public void markDirty()
     {
-        world.updateListeners(pos, getCachedState(), getCachedState(), 4);
+        world.updateListeners(pos, getCachedState(), getCachedState(), 12);
         super.markDirty();
     }
 

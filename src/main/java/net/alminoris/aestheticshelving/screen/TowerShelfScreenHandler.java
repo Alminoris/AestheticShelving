@@ -25,15 +25,19 @@ public class TowerShelfScreenHandler extends ScreenHandler
                                    TowerShelfBlockEntity blockEntity)
     {
         super(ModScreenHandlers.TOWER_SHELF_SCREEN_HANDLER, syncId);
-        checkSize(blockEntity, 4);
+        checkSize(blockEntity, 12);
         this.INVENTORY = blockEntity;
         INVENTORY.onOpen(playerInventory.player);
         this.blockEntity = blockEntity;
 
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 0, 71, 21));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 1, 89, 21));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 2, 71, 48));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 3, 89, 48));
+        int l = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                this.addSlot(new Slot(INVENTORY, l++, 53+18*j, 20+18*i));
+            }
+        }
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

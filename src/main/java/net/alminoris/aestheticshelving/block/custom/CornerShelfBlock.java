@@ -27,6 +27,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -34,8 +35,9 @@ import java.util.List;
 
 public class CornerShelfBlock extends BlockWithEntity implements BlockEntityProvider
 {
-    private static final VoxelShape SHAPE = Block.createCuboidShape(2, 7, 8, 16, 9, 16);
-    private static final VoxelShape SHAPE1 = Block.createCuboidShape(8, 7, 2, 16, 9, 16);
+    private static final VoxelShape SHAPE = Block.createCuboidShape(9, 7, 0, 16, 9, 7);
+    private static final VoxelShape SHAPE1 = Block.createCuboidShape(6, 7, 0, 16, 9, 4);
+    private static final VoxelShape SHAPE2 = Block.createCuboidShape(12, 7, 0, 16, 9, 10);
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
@@ -74,6 +76,7 @@ public class CornerShelfBlock extends BlockWithEntity implements BlockEntityProv
         List<Box> boxes = new ArrayList<>();
         boxes.add(SHAPE.getBoundingBox());
         boxes.add(SHAPE1.getBoundingBox());
+        boxes.add(SHAPE2.getBoundingBox());
 
         return VoxelShapeHelper.rotateShape(boxes, direction);
     }
@@ -98,12 +101,37 @@ public class CornerShelfBlock extends BlockWithEntity implements BlockEntityProv
     }
 
     @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos)
+    {
+        Direction facing = state.get(FACING);
+        BlockPos supportPos = pos.offset(facing);
+        BlockPos supportPos1 = pos.offset(facing.rotateYClockwise());
+        return world.getBlockState(supportPos).isSolidBlock(world, supportPos) && world.getBlockState(supportPos1).isSolidBlock(world, supportPos1);
+    }
+
+    @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState,
                                                 WorldAccess world, BlockPos pos, BlockPos neighborPos)
     {
         if (state.get(WATERLOGGED))
         {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
+        Direction facing = state.get(FACING);
+        if (direction == facing || direction == facing.rotateYClockwise())
+        {
+            BlockPos supportPos = pos.offset(facing);
+            BlockPos supportPos1 = pos.offset(facing.rotateYClockwise());
+
+            if (!world.getBlockState(supportPos).isSolidBlock(world, supportPos) || !world.getBlockState(supportPos1).isSolidBlock(world, supportPos1))
+            {
+                if (world instanceof World realWorld)
+                {
+                    realWorld.breakBlock(pos, true);
+                }
+                return Blocks.AIR.getDefaultState();
+            }
         }
 
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);

@@ -25,15 +25,13 @@ public class CornerShelfScreenHandler extends ScreenHandler
                                     CornerShelfBlockEntity blockEntity)
     {
         super(ModScreenHandlers.CORNER_SHELF_SCREEN_HANDLER, syncId);
-        checkSize(blockEntity, 4);
+        checkSize(blockEntity, 2);
         this.INVENTORY = blockEntity;
         INVENTORY.onOpen(playerInventory.player);
         this.blockEntity = blockEntity;
 
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 0, 71, 21));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 1, 89, 21));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 2, 71, 48));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 3, 89, 48));
+        this.addSlot(new Slot(INVENTORY, 0, 71, 34));
+        this.addSlot(new Slot(INVENTORY, 1, 89, 34));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

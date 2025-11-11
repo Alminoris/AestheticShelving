@@ -16,7 +16,7 @@ import static net.alminoris.aestheticshelving.util.helper.BlockSetsHelper.getWoo
 public class TowerShelfScreen extends HandledScreen<TowerShelfScreenHandler>
 {
     private final Identifier TEXTURE = Identifier.of(AestheticShelving.MOD_ID,
-            "textures/gui/"+ getWoodName(ModBlocks.TOWER_SHELVES, handler.blockEntity) +"_standing.png");;
+            "textures/gui/"+ getWoodName(ModBlocks.TOWER_SHELVES, handler.blockEntity) +"_tower.png");;
 
     public TowerShelfScreen(TowerShelfScreenHandler handler, PlayerInventory inventory, Text title)
     {

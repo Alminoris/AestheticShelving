@@ -30,7 +30,7 @@ import java.util.List;
 
 public class CornerShelfBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory
 {
-    private final DefaultedList<ItemStack> INVENTORY = DefaultedList.ofSize(4, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> INVENTORY = DefaultedList.ofSize(2, ItemStack.EMPTY);
     private String name;
 
     public CornerShelfBlockEntity(BlockPos pos, BlockState state)
@@ -38,29 +38,17 @@ public class CornerShelfBlockEntity extends BlockEntity implements ExtendedScree
         super(ModBlockEntities.CORNER_SHELF_BLOCK_ENTITY, pos, state);
     }
 
-    public Dictionary<Integer, List<ItemStack>> getRenderStack()
+    public List<ItemStack> getRenderStack()
     {
         Dictionary<Integer, List<ItemStack>> result = new Hashtable<>();
         List<ItemStack> res1 = new ArrayList<>();
-        List<ItemStack> res2 = new ArrayList<>();
         for(int i = 0; i < INVENTORY.size(); i++)
         {
-            if (i < 2)
-            {
-                if (!this.getStack(i).isEmpty())
-                    res1.add(this.getStack(i));
-            }
-            else
-            {
-                if (!this.getStack(i).isEmpty())
-                    res2.add(this.getStack(i));
-            }
+            if (!this.getStack(i).isEmpty())
+                res1.add(this.getStack(i));
         }
 
-        result.put(0, res1);
-        result.put(1, res2);
-
-        return result;
+        return res1;
     }
 
     public void tick(World world, BlockPos pos, BlockState state)
@@ -74,7 +62,7 @@ public class CornerShelfBlockEntity extends BlockEntity implements ExtendedScree
     @Override
     public void markDirty()
     {
-        world.updateListeners(pos, getCachedState(), getCachedState(), 4);
+        world.updateListeners(pos, getCachedState(), getCachedState(), 2);
         super.markDirty();
     }
 

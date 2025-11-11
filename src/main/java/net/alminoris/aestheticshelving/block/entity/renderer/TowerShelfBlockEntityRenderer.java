@@ -11,6 +11,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -18,8 +19,8 @@ import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 
-import java.util.Dictionary;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class TowerShelfBlockEntityRenderer implements BlockEntityRenderer<TowerShelfBlockEntity>
 {
@@ -33,58 +34,66 @@ public class TowerShelfBlockEntityRenderer implements BlockEntityRenderer<TowerS
                        VertexConsumerProvider vertexConsumers, int light, int overlay)
     {
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-        Dictionary<Integer, List<ItemStack>> stacks = entity.getRenderStack();
+        TreeMap<Integer, List<ItemStack>> oldStacks = entity.getRenderStack();
 
-        // Враховуємо facing
         Direction facing = entity.getCachedState().get(TowerShelfBlock.FACING);
 
         matrices.push();
 
-        // Центруємо і повертаємо полку згідно з facing
-        matrices.translate(0.5, 0.5, 0.5); // центр блоку
-        switch (facing) {
+        matrices.translate(0.5, 0.5, 0.5);
+        switch (facing)
+        {
             case Direction.NORTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(0));
             case Direction.SOUTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
             case Direction.WEST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
             case Direction.EAST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
         }
-        matrices.translate(-0.5, -0.5, -0.5); // повертаємо назад
+        matrices.translate(-0.5, -0.5, -0.5);
 
-        float f = 0.25f;
-        for (ItemStack stack : stacks.get(0))
+        float[] xArr = new float[] { 0.5f, 0.765f, 0.5f, 0.245f };
+        float[] yArr = new float[] { 0.275f, 0.58f, 0.8875f };
+        float[] zArr = new float[] { 0.245f, 0.5f, 0.765f, 0.5f };
+        float[] yDegrees = new float[] { 0f, 90f, 180f, 270f };
+
+        Map<Integer, List<ItemStack>> stacks = oldStacks.descendingMap();
+
+        for (int i = 0; i < 3; i++)
         {
-            matrices.push();
-            matrices.translate(f, 0.875f, 0.65f);
-            matrices.scale(0.25f, 0.25f, 0.25f);
-            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(270));
+            List<ItemStack> layerStacks = stacks.get(i);
+            if (layerStacks == null) continue;
 
-            itemRenderer.renderItem(stack, ModelTransformationMode.GUI,
-                    getLightLevel(entity.getWorld(), entity.getPos()), OverlayTexture.DEFAULT_UV,
-                    matrices, vertexConsumers, entity.getWorld(), 1);
+            int j = 0;
+            for (ItemStack stack : layerStacks)
+            {
+                if (j >= xArr.length) break;
 
-            matrices.pop();
-            f += 1f / stacks.get(0).size();
+                matrices.push();
+                matrices.translate(xArr[j], (stack.getItem() instanceof BlockItem) ? yArr[i] : (yArr[i] - 0.0525f), zArr[j]);
+                matrices.scale(0.2f, 0.2f, 0.2f);
+
+                matrices.multiply(RotationAxis.NEGATIVE_Y.rotationDegrees(yDegrees[j]));
+
+                if (stack.getItem() instanceof BlockItem)
+                {
+                    matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(135));
+                    matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(330));
+                }
+                else
+                {
+                    matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(270));
+                }
+
+                itemRenderer.renderItem(stack, ModelTransformationMode.GUI,
+                        getLightLevel(entity.getWorld(), entity.getPos()), OverlayTexture.DEFAULT_UV,
+                        matrices, vertexConsumers, entity.getWorld(), 1);
+
+                matrices.pop();
+                j++;
+            }
         }
 
-        f = 0.25f;
-        for (ItemStack stack : stacks.get(1))
-        {
-            matrices.push();
-            matrices.translate(f, 0.375f, 0.65f);
-            matrices.scale(0.25f, 0.25f, 0.25f);
-            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(270));
-
-            itemRenderer.renderItem(stack, ModelTransformationMode.GUI,
-                    getLightLevel(entity.getWorld(), entity.getPos()), OverlayTexture.DEFAULT_UV,
-                    matrices, vertexConsumers, entity.getWorld(), 1);
-
-            matrices.pop();
-            f += 1f / stacks.get(1).size();
-        }
-
-        matrices.pop(); // головний push
+        matrices.pop();
     }
-
 
     private int getLightLevel(World world, BlockPos pos)
     {

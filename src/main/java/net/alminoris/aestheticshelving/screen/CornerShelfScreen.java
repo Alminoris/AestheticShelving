@@ -16,7 +16,7 @@ import static net.alminoris.aestheticshelving.util.helper.BlockSetsHelper.getWoo
 public class CornerShelfScreen extends HandledScreen<CornerShelfScreenHandler>
 {
     private final Identifier TEXTURE = Identifier.of(AestheticShelving.MOD_ID,
-            "textures/gui/"+ getWoodName(ModBlocks.CORNER_SHELVES, handler.blockEntity) +"_standing.png");;
+            "textures/gui/"+ getWoodName(ModBlocks.CORNER_SHELVES, handler.blockEntity) +"_corner.png");;
 
     public CornerShelfScreen(CornerShelfScreenHandler handler, PlayerInventory inventory, Text title)
     {

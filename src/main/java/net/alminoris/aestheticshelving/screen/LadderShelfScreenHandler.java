@@ -25,15 +25,19 @@ public class LadderShelfScreenHandler extends ScreenHandler
                                     LadderShelfBlockEntity blockEntity)
     {
         super(ModScreenHandlers.LADDER_SHELF_SCREEN_HANDLER, syncId);
-        checkSize(blockEntity, 4);
+        checkSize(blockEntity, 14);
         this.INVENTORY = blockEntity;
         INVENTORY.onOpen(playerInventory.player);
         this.blockEntity = blockEntity;
 
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 0, 71, 21));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 1, 89, 21));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 2, 71, 48));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 3, 89, 48));
+        int l = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < i+2; j++)
+            {
+                this.addSlot(new Slot(INVENTORY, l++, 44+18*j, 8+18*i));
+            }
+        }
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
