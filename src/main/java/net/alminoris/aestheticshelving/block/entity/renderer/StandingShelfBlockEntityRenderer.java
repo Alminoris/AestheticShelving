@@ -11,6 +11,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -43,10 +44,10 @@ public class StandingShelfBlockEntityRenderer implements BlockEntityRenderer<Sta
         // Центруємо і повертаємо полку згідно з facing
         matrices.translate(0.5, 0.5, 0.5); // центр блоку
         switch (facing) {
-            case NORTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(0));
-            case SOUTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
-            case WEST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
-            case EAST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
+            case Direction.NORTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(0));
+            case Direction.SOUTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
+            case Direction.WEST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
+            case Direction.EAST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
         }
         matrices.translate(-0.5, -0.5, -0.5); // повертаємо назад
 
@@ -54,9 +55,17 @@ public class StandingShelfBlockEntityRenderer implements BlockEntityRenderer<Sta
         for (ItemStack stack : stacks.get(0))
         {
             matrices.push();
-            matrices.translate(f, 0.875f, 0.65f);
+            matrices.translate(f, (stack.getItem() instanceof BlockItem) ? 0.895f : 0.8425f, 0.65f);
             matrices.scale(0.25f, 0.25f, 0.25f);
-            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(270));
+            if (stack.getItem() instanceof BlockItem)
+            {
+                matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(315));
+                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(330));
+            }
+            else
+            {
+                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(270));
+            }
 
             itemRenderer.renderItem(stack, ModelTransformationMode.GUI,
                     getLightLevel(entity.getWorld(), entity.getPos()), OverlayTexture.DEFAULT_UV,
@@ -70,9 +79,17 @@ public class StandingShelfBlockEntityRenderer implements BlockEntityRenderer<Sta
         for (ItemStack stack : stacks.get(1))
         {
             matrices.push();
-            matrices.translate(f, 0.375f, 0.65f);
+            matrices.translate(f, (stack.getItem() instanceof BlockItem) ? 0.395f : 0.3425f, 0.65f);
             matrices.scale(0.25f, 0.25f, 0.25f);
-            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(270));
+            if (stack.getItem() instanceof BlockItem)
+            {
+                matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(315));
+                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(330));
+            }
+            else
+            {
+                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(270));
+            }
 
             itemRenderer.renderItem(stack, ModelTransformationMode.GUI,
                     getLightLevel(entity.getWorld(), entity.getPos()), OverlayTexture.DEFAULT_UV,

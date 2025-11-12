@@ -2,6 +2,8 @@ package net.alminoris.aestheticshelving.block.entity.renderer;
 
 import net.alminoris.aestheticshelving.block.custom.ShelfBlock;
 import net.alminoris.aestheticshelving.block.entity.ShelfBlockEntity;
+import net.minecraft.block.FacingBlock;
+import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.OverlayTexture;
@@ -11,6 +13,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -42,10 +45,10 @@ public class ShelfBlockEntityRenderer implements BlockEntityRenderer<ShelfBlockE
         // Центруємо і повертаємо полку згідно з facing
         matrices.translate(0.5, 0.5, 0.5); // центр блоку
         switch (facing) {
-            case NORTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(0));
-            case SOUTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
-            case WEST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
-            case EAST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
+            case Direction.NORTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(0));
+            case Direction.SOUTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
+            case Direction.WEST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
+            case Direction.EAST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
         }
         matrices.translate(-0.5, -0.5, -0.5); // повертаємо назад
 
@@ -53,9 +56,17 @@ public class ShelfBlockEntityRenderer implements BlockEntityRenderer<ShelfBlockE
         for (ItemStack stack : stacks)
         {
             matrices.push();
-            matrices.translate(f, 0.625f, 0.20f);
+            matrices.translate(f, (stack.getItem() instanceof BlockItem) ? 0.64f : 0.5875f, 0.20f);
             matrices.scale(0.25f, 0.25f, 0.25f);
-            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(270));
+            if (stack.getItem() instanceof BlockItem)
+            {
+                matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(315));
+                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(330));
+            }
+            else
+            {
+                matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(270));
+            }
 
             itemRenderer.renderItem(stack, ModelTransformationMode.GUI,
                     getLightLevel(entity.getWorld(), entity.getPos()), OverlayTexture.DEFAULT_UV,
