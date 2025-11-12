@@ -24,14 +24,13 @@ public class ModLanguageProviderRuRu extends FabricLanguageProvider
         Map<String, String> stoneObjects = new LinkedHashMap<>();
 
         Map<String, String> woodObjects = new LinkedHashMap<>();
-        woodObjects.put("cupboard_", "Шкаф из %s");
-        woodObjects.put("cabinet_", "Шкафчик из %s");
-        woodObjects.put("cabinet_flipup", "Верхний шкафчик из %s");
-        woodObjects.put("cabinet_flipdown_", "Нижний шкафчик из %s");
-        woodObjects.put("halfcupboard_", "Малый шкаф из %s");
-        woodObjects.put("halfcabinet_", "Маленькая тумбочка из %s");
-        woodObjects.put("halfcabinet_flipup", "Верхний малый шкаф из %s");
-        woodObjects.put("halfcabinet_flipdown_", "Нижний малый шкаф из %s");
+        woodObjects.put("shelf_", "Полка из %s");
+        woodObjects.put("standing_shelf_", "Стоячая полка из %s");
+        woodObjects.put("ceiling_shelf_", "Потолочная полка из %s");
+        woodObjects.put("corner_shelf_", "Угловая полка из %s");
+        woodObjects.put("ladder_shelf_", "Полка-лестница из %s");
+        woodObjects.put("tower_shelf_", "Полка-башня из %s");
+
 
         Map<String, String> stoneMaterials = new LinkedHashMap<>();
         stoneMaterials.put("stone", "камня");
