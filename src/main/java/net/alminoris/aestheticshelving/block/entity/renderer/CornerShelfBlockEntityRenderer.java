@@ -42,10 +42,10 @@ public class CornerShelfBlockEntityRenderer implements BlockEntityRenderer<Corne
 
         matrices.translate(0.5, 0.5, 0.5);
         switch (facing) {
-            case Direction.NORTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(0));
-            case Direction.SOUTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
-            case Direction.WEST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
-            case Direction.EAST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
+            case NORTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(0));
+            case SOUTH -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180));
+            case WEST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90));
+            case EAST  -> matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90));
         }
         matrices.translate(-0.5, -0.5, -0.5);
 

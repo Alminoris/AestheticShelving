@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
@@ -25,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class TowerShelfBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory
+public class TowerShelfBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory
 {
     private final DefaultedList<ItemStack> INVENTORY = DefaultedList.ofSize(12, ItemStack.EMPTY);
     private String name;
@@ -82,23 +83,23 @@ public class TowerShelfBlockEntity extends BlockEntity implements ExtendedScreen
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup)
+    protected void writeNbt(NbtCompound nbt)
     {
-        super.writeNbt(nbt, registryLookup);
-        Inventories.writeNbt(nbt, INVENTORY, registryLookup);
+        super.writeNbt(nbt);
+        Inventories.writeNbt(nbt, INVENTORY);
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup)
+    public void readNbt(NbtCompound nbt)
     {
-        super.readNbt(nbt, registryLookup);
-        Inventories.readNbt(nbt, INVENTORY, registryLookup);
+        super.readNbt(nbt);
+        Inventories.readNbt(nbt, INVENTORY);
     }
 
     @Override
-    public BlockPosPayload getScreenOpeningData(ServerPlayerEntity serverPlayerEntity)
+    public void writeScreenOpeningData(ServerPlayerEntity serverPlayerEntity, PacketByteBuf packetByteBuf)
     {
-        return new BlockPosPayload(this.pos);
+        packetByteBuf.writeBlockPos(this.pos);
     }
 
     @Override
@@ -120,8 +121,8 @@ public class TowerShelfBlockEntity extends BlockEntity implements ExtendedScreen
     }
 
     @Override
-    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup)
+    public NbtCompound toInitialChunkDataNbt()
     {
-        return createNbt(registryLookup);
+        return createNbt();
     }
 }
