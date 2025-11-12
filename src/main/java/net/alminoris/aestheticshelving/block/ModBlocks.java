@@ -1,9 +1,7 @@
 package net.alminoris.aestheticshelving.block;
 
 import net.alminoris.aestheticshelving.AestheticShelving;
-import net.alminoris.aestheticshelving.block.custom.CeilingShelfBlock;
-import net.alminoris.aestheticshelving.block.custom.ShelfBlock;
-import net.alminoris.aestheticshelving.block.custom.StandingShelfBlock;
+import net.alminoris.aestheticshelving.block.custom.*;
 import net.alminoris.aestheticshelving.util.helper.BlockSetsHelper;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -40,6 +38,30 @@ public class ModBlocks
         for(String name : BlockSetsHelper.getWoods())
         {
             put(name, registerBlock("ceiling_shelf_"+name, new CeilingShelfBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS))));
+        }
+    }};
+
+    public static final Dictionary<String, Block> CORNER_SHELVES = new Hashtable<>()
+    {{
+        for(String name : BlockSetsHelper.getWoods())
+        {
+            put(name, registerBlock("corner_shelf_"+name, new CornerShelfBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS))));
+        }
+    }};
+
+    public static final Dictionary<String, Block> TOWER_SHELVES = new Hashtable<>()
+    {{
+        for(String name : BlockSetsHelper.getWoods())
+        {
+            put(name, registerBlock("tower_shelf_"+name, new TowerShelfBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS))));
+        }
+    }};
+
+    public static final Dictionary<String, Block> LADDER_SHELVES = new Hashtable<>()
+    {{
+        for(String name : BlockSetsHelper.getWoods())
+        {
+            put(name, registerBlock("ladder_shelf_"+name, new LadderShelfBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS))));
         }
     }};
 
