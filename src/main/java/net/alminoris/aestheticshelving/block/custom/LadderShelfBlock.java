@@ -74,6 +74,18 @@ public class LadderShelfBlock extends BlockWithEntity implements BlockEntityProv
         return getRotatedShape(state);
     }
 
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context)
+    {
+        return getRotatedShape(state);
+    }
+
+    @Override
+    protected VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context)
+    {
+        return getRotatedShape(state);
+    }
+
     private VoxelShape getRotatedShape(BlockState state)
     {
         Direction direction = state.get(FACING);

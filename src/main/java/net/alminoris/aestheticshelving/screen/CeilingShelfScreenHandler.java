@@ -30,9 +30,9 @@ public class CeilingShelfScreenHandler extends ScreenHandler
         INVENTORY.onOpen(playerInventory.player);
         this.blockEntity = blockEntity;
 
-        this.addSlot(new Slot(INVENTORY, 0, 62, 34));
-        this.addSlot(new Slot(INVENTORY, 1, 80, 34));
-        this.addSlot(new Slot(INVENTORY, 2, 98, 34));
+        this.addSlot(new OneItemSlot(INVENTORY, 0, 62, 34));
+        this.addSlot(new OneItemSlot(INVENTORY, 1, 80, 34));
+        this.addSlot(new OneItemSlot(INVENTORY, 2, 98, 34));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

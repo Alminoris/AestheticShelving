@@ -33,9 +33,10 @@ public class LadderShelfScreenHandler extends ScreenHandler
         int l = 0;
         for (int i = 0; i < 4; i++)
         {
+            int base = (80+18*(4 - (i+1)));
             for (int j = 0; j < i+2; j++)
             {
-                this.addSlot(new Slot(INVENTORY, l++, 44+18*j, 8+18*i));
+                this.addSlot(new OneItemSlot(INVENTORY, l++, base+18*j, 24+18*i));
             }
         }
 
@@ -96,7 +97,7 @@ public class LadderShelfScreenHandler extends ScreenHandler
         {
             for (int l = 0; l < 9; ++l)
             {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 100 + i * 18));
             }
         }
     }
@@ -105,7 +106,7 @@ public class LadderShelfScreenHandler extends ScreenHandler
     {
         for (int i = 0; i < 9; ++i)
         {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 158));
         }
     }
 }

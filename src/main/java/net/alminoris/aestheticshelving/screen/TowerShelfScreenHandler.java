@@ -35,7 +35,7 @@ public class TowerShelfScreenHandler extends ScreenHandler
         {
             for (int j = 0; j < 4; j++)
             {
-                this.addSlot(new Slot(INVENTORY, l++, 53+18*j, 20+18*i));
+                this.addSlot(new OneItemSlot(INVENTORY, l++, 53+18*j, 26+18*i));
             }
         }
 
@@ -96,7 +96,7 @@ public class TowerShelfScreenHandler extends ScreenHandler
         {
             for (int l = 0; l < 9; ++l)
             {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 96 + i * 18));
             }
         }
     }
@@ -105,7 +105,7 @@ public class TowerShelfScreenHandler extends ScreenHandler
     {
         for (int i = 0; i < 9; ++i)
         {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 154));
         }
     }
 }

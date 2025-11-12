@@ -30,8 +30,8 @@ public class CornerShelfScreenHandler extends ScreenHandler
         INVENTORY.onOpen(playerInventory.player);
         this.blockEntity = blockEntity;
 
-        this.addSlot(new Slot(INVENTORY, 0, 71, 34));
-        this.addSlot(new Slot(INVENTORY, 1, 89, 34));
+        this.addSlot(new OneItemSlot(INVENTORY, 0, 71, 34));
+        this.addSlot(new OneItemSlot(INVENTORY, 1, 89, 34));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

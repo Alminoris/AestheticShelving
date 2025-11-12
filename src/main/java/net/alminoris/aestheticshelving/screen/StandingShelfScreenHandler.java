@@ -30,10 +30,10 @@ public class StandingShelfScreenHandler extends ScreenHandler
         INVENTORY.onOpen(playerInventory.player);
         this.blockEntity = blockEntity;
 
-        this.addSlot(new Slot(INVENTORY, 0, 71, 21));
-        this.addSlot(new Slot(INVENTORY, 1, 89, 21));
-        this.addSlot(new Slot(INVENTORY, 2, 71, 48));
-        this.addSlot(new Slot(INVENTORY, 3, 89, 48));
+        this.addSlot(new OneItemSlot(INVENTORY, 0, 71, 21));
+        this.addSlot(new OneItemSlot(INVENTORY, 1, 89, 21));
+        this.addSlot(new OneItemSlot(INVENTORY, 2, 71, 48));
+        this.addSlot(new OneItemSlot(INVENTORY, 3, 89, 48));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

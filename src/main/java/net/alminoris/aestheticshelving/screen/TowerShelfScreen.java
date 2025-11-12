@@ -30,7 +30,7 @@ public class TowerShelfScreen extends HandledScreen<TowerShelfScreenHandler>
         titleY = 10;
         titleX = 10;
         playerInventoryTitleX = 10;
-        playerInventoryTitleY = 68;
+        playerInventoryTitleY = 80;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class TowerShelfScreen extends HandledScreen<TowerShelfScreenHandler>
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
 
-        context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight+12);
     }
 
     @Override
