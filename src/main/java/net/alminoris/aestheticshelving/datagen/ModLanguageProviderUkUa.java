@@ -131,6 +131,6 @@ public class ModLanguageProviderUkUa extends FabricLanguageProvider
             }
         }
 
-        translationBuilder.add("itemgroup.ashelftab", "Aesthetic Shelving");
+        translationBuilder.add("itemGroup.aestheticshelving.ashelftab", "Aesthetic Shelving");
     }
 }

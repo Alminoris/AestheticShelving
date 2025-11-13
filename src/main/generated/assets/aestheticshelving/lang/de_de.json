@@ -402,5 +402,5 @@
   "block.aestheticshelving.tower_shelf_wisteria_nss": "Turmregal aus Glyzinie",
   "block.aestheticshelving.tower_shelf_yew": "Turmregal aus Eibe",
   "item.aestheticshelving.wrench": "Schraubenschlüssel",
-  "itemgroup.ashelftab": "Aesthetic Shelving"
+  "itemGroup.aestheticshelving.ashelftab": "Aesthetic Shelving"
 }

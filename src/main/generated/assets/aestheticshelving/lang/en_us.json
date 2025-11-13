@@ -53,5 +53,5 @@
   "block.aestheticshelving.tower_shelf_oak": "Oak Tower Shelf",
   "block.aestheticshelving.tower_shelf_spruce": "Spruce Tower Shelf",
   "block.aestheticshelving.tower_shelf_warped": "Warped Tower Shelf",
-  "itemgroup.ashelftab": "Aesthetic Shelving"
+  "itemGroup.aestheticshelving.ashelftab": "Aesthetic Shelving"
 }

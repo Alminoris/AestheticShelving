@@ -47,7 +47,7 @@ public class ModLanguageProviderEnUs extends FabricLanguageProvider
                     translationBuilder.add("block." + AestheticShelving.MOD_ID + "." + path, displayName);
                 });
 
-        translationBuilder.add("itemgroup.ashelftab", "Aesthetic Shelving");
+        translationBuilder.add("itemGroup.aestheticshelving.ashelftab", "Aesthetic Shelving");
     }
 
     public static String movePrefix(String input, String[] arr)
