@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "aestheticshelving:corner_shelf_warped"
+    ]
+  },
+  "criteria": {
+    "has_warped_stem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:warped_stem"
+            ]
+          }
+        ]
+      }
+    },
+    "has_stripped_warped_stem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:stripped_warped_stem"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "aestheticshelving:corner_shelf_warped"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_warped_stem",
+      "has_stripped_warped_stem",
+      "has_the_recipe"
+    ]
+  ]
+}

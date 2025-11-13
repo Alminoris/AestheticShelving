@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " / ",
+    "/#/",
+    "/#/"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:crimson_stem"
+    },
+    "/": {
+      "item": "minecraft:stripped_crimson_stem"
+    }
+  },
+  "result": {
+    "item": "aestheticshelving:tower_shelf_crimson",
+    "count": 3
+  }
+}

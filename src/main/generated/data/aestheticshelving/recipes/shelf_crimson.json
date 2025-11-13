@@ -1,5 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#/#"
+  ],
   "key": {
     "#": {
       "item": "minecraft:crimson_stem"
@@ -8,11 +11,8 @@
       "item": "minecraft:stripped_crimson_stem"
     }
   },
-  "pattern": [
-    "#/#"
-  ],
   "result": {
-    "count": 4,
-    "item": "aestheticshelving:shelf_crimson"
+    "item": "aestheticshelving:shelf_crimson",
+    "count": 4
   }
 }

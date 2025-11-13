@@ -1,5 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#/#"
+  ],
   "key": {
     "#": {
       "item": "minecraft:spruce_log"
@@ -8,11 +11,8 @@
       "item": "minecraft:stripped_spruce_log"
     }
   },
-  "pattern": [
-    "#/#"
-  ],
   "result": {
-    "count": 4,
-    "item": "aestheticshelving:shelf_spruce"
+    "item": "aestheticshelving:shelf_spruce",
+    "count": 4
   }
 }

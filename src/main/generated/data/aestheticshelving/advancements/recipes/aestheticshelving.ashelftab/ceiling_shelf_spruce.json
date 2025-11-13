@@ -1,7 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "aestheticshelving:ceiling_shelf_spruce"
+    ]
+  },
   "criteria": {
     "has_chain": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -10,10 +16,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "has_stripped_spruce_log": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -22,14 +28,13 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "aestheticshelving:ceiling_shelf_spruce"
-      },
-      "trigger": "minecraft:recipe_unlocked"
+      }
     }
   },
   "requirements": [
@@ -38,10 +43,5 @@
       "has_stripped_spruce_log",
       "has_the_recipe"
     ]
-  ],
-  "rewards": {
-    "recipes": [
-      "aestheticshelving:ceiling_shelf_spruce"
-    ]
-  }
+  ]
 }

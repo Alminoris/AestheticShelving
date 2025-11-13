@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#/ ",
+    "#/ ",
+    " #/"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:dark_oak_log"
+    },
+    "/": {
+      "item": "minecraft:stripped_dark_oak_log"
+    }
+  },
+  "result": {
+    "item": "aestheticshelving:ladder_shelf_dark_oak",
+    "count": 2
+  }
+}

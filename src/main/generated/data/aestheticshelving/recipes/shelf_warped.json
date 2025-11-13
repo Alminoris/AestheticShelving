@@ -1,5 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#/#"
+  ],
   "key": {
     "#": {
       "item": "minecraft:warped_stem"
@@ -8,11 +11,8 @@
       "item": "minecraft:stripped_warped_stem"
     }
   },
-  "pattern": [
-    "#/#"
-  ],
   "result": {
-    "count": 4,
-    "item": "aestheticshelving:shelf_warped"
+    "item": "aestheticshelving:shelf_warped",
+    "count": 4
   }
 }

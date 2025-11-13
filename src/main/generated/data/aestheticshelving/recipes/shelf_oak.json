@@ -1,5 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#/#"
+  ],
   "key": {
     "#": {
       "item": "minecraft:oak_log"
@@ -8,11 +11,8 @@
       "item": "minecraft:stripped_oak_log"
     }
   },
-  "pattern": [
-    "#/#"
-  ],
   "result": {
-    "count": 4,
-    "item": "aestheticshelving:shelf_oak"
+    "item": "aestheticshelving:shelf_oak",
+    "count": 4
   }
 }

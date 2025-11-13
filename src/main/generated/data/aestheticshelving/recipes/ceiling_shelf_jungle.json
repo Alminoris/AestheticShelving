@@ -1,5 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "///"
+  ],
   "key": {
     "#": {
       "item": "minecraft:chain"
@@ -8,12 +12,8 @@
       "item": "minecraft:stripped_jungle_log"
     }
   },
-  "pattern": [
-    "# #",
-    "///"
-  ],
   "result": {
-    "count": 4,
-    "item": "aestheticshelving:ceiling_shelf_jungle"
+    "item": "aestheticshelving:ceiling_shelf_jungle",
+    "count": 4
   }
 }

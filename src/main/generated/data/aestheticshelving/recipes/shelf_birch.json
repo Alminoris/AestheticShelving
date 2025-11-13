@@ -1,5 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#/#"
+  ],
   "key": {
     "#": {
       "item": "minecraft:birch_log"
@@ -8,11 +11,8 @@
       "item": "minecraft:stripped_birch_log"
     }
   },
-  "pattern": [
-    "#/#"
-  ],
   "result": {
-    "count": 4,
-    "item": "aestheticshelving:shelf_birch"
+    "item": "aestheticshelving:shelf_birch",
+    "count": 4
   }
 }

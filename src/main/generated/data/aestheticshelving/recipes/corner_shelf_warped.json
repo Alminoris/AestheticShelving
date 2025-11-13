@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#/",
+    " #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:warped_stem"
+    },
+    "/": {
+      "item": "minecraft:stripped_warped_stem"
+    }
+  },
+  "result": {
+    "item": "aestheticshelving:corner_shelf_warped",
+    "count": 4
+  }
+}
