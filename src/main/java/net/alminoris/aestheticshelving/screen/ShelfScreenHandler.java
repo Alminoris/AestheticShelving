@@ -1,6 +1,7 @@
 package net.alminoris.aestheticshelving.screen;
 
 import net.alminoris.aestheticshelving.block.entity.ShelfBlockEntity;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -30,9 +31,9 @@ public class ShelfScreenHandler extends ScreenHandler
         INVENTORY.onOpen(playerInventory.player);
         this.blockEntity = blockEntity;
 
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 0, 62, 34));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 1, 80, 34));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 2, 98, 34));
+        this.addSlot(new OneItemSlot(INVENTORY, 0, 62, 34));
+        this.addSlot(new OneItemSlot(INVENTORY, 1, 80, 34));
+        this.addSlot(new OneItemSlot(INVENTORY, 2, 98, 34));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

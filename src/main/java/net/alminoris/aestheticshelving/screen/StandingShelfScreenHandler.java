@@ -1,6 +1,7 @@
 package net.alminoris.aestheticshelving.screen;
 
 import net.alminoris.aestheticshelving.block.entity.StandingShelfBlockEntity;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -20,7 +21,6 @@ public class StandingShelfScreenHandler extends ScreenHandler
         this(syncId, inventory, (StandingShelfBlockEntity) inventory.player.getWorld().getBlockEntity(buf.readBlockPos()));
     }
 
-
     //Server
     public StandingShelfScreenHandler(int syncId, PlayerInventory playerInventory,
                                       StandingShelfBlockEntity blockEntity)
@@ -31,10 +31,10 @@ public class StandingShelfScreenHandler extends ScreenHandler
         INVENTORY.onOpen(playerInventory.player);
         this.blockEntity = blockEntity;
 
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 0, 71, 21));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 1, 89, 21));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 2, 71, 48));
-        this.addSlot(new NoBlockItemSlot(INVENTORY, 3, 89, 48));
+        this.addSlot(new OneItemSlot(INVENTORY, 0, 71, 21));
+        this.addSlot(new OneItemSlot(INVENTORY, 1, 89, 21));
+        this.addSlot(new OneItemSlot(INVENTORY, 2, 71, 48));
+        this.addSlot(new OneItemSlot(INVENTORY, 3, 89, 48));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

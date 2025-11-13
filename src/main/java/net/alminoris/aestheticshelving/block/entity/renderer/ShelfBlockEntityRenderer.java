@@ -2,6 +2,8 @@ package net.alminoris.aestheticshelving.block.entity.renderer;
 
 import net.alminoris.aestheticshelving.block.custom.ShelfBlock;
 import net.alminoris.aestheticshelving.block.entity.ShelfBlockEntity;
+import net.minecraft.block.FacingBlock;
+import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.OverlayTexture;
@@ -9,16 +11,21 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
+
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3f;
+
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 
 import java.util.List;
+
+import static net.minecraft.util.math.Vec3f.POSITIVE_X;
+import static net.minecraft.util.math.Vec3f.POSITIVE_Y;
 
 public class ShelfBlockEntityRenderer implements BlockEntityRenderer<ShelfBlockEntity>
 {
@@ -42,10 +49,10 @@ public class ShelfBlockEntityRenderer implements BlockEntityRenderer<ShelfBlockE
         // Центруємо і повертаємо полку згідно з facing
         matrices.translate(0.5, 0.5, 0.5); // центр блоку
         switch (facing) {
-            case NORTH -> matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(0));
-            case SOUTH -> matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180));
-            case WEST  -> matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(90));
-            case EAST  -> matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-90));
+            case NORTH -> matrices.multiply(POSITIVE_Y.getDegreesQuaternion(0));
+            case SOUTH -> matrices.multiply(POSITIVE_Y.getDegreesQuaternion(180));
+            case WEST  -> matrices.multiply(POSITIVE_Y.getDegreesQuaternion(90));
+            case EAST  -> matrices.multiply(POSITIVE_Y.getDegreesQuaternion(-90));
         }
         matrices.translate(-0.5, -0.5, -0.5); // повертаємо назад
 
@@ -53,9 +60,17 @@ public class ShelfBlockEntityRenderer implements BlockEntityRenderer<ShelfBlockE
         for (ItemStack stack : stacks)
         {
             matrices.push();
-            matrices.translate(f, 0.625f, 0.20f);
+            matrices.translate(f, (stack.getItem() instanceof BlockItem) ? 0.64f : 0.5875f, 0.20f);
             matrices.scale(0.25f, 0.25f, 0.25f);
-            matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(270));
+            if (stack.getItem() instanceof BlockItem)
+            {
+                matrices.multiply(POSITIVE_Y.getDegreesQuaternion(315));
+                matrices.multiply(POSITIVE_X.getDegreesQuaternion(330));
+            }
+            else
+            {
+                matrices.multiply(POSITIVE_X.getDegreesQuaternion(270));
+            }
 
             itemRenderer.renderItem(stack, ModelTransformation.Mode.GUI,
                     getLightLevel(entity.getWorld(), entity.getPos()), OverlayTexture.DEFAULT_UV,

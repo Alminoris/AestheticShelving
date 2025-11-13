@@ -29,6 +29,21 @@ public class ModBlockEntities
                     FabricBlockEntityTypeBuilder.create(CeilingShelfBlockEntity::new,
                             toBlockArray(ModBlocks.CEILING_SHELVES.elements())).build());
 
+    public static final BlockEntityType<CornerShelfBlockEntity> CORNER_SHELF_BLOCK_ENTITY =
+            Registry.register(Registry.BLOCK_ENTITY_TYPE, Identifier.of(AestheticShelving.MOD_ID, "corner_shelf_be"),
+                    FabricBlockEntityTypeBuilder.create(CornerShelfBlockEntity::new,
+                            toBlockArray(ModBlocks.SHELVES.elements())).build());
+
+    public static final BlockEntityType<LadderShelfBlockEntity> LADDER_SHELF_BLOCK_ENTITY =
+            Registry.register(Registry.BLOCK_ENTITY_TYPE, Identifier.of(AestheticShelving.MOD_ID, "ladder_shelf_be"),
+                    FabricBlockEntityTypeBuilder.create(LadderShelfBlockEntity::new,
+                            toBlockArray(ModBlocks.STANDING_SHELVES.elements())).build());
+
+    public static final BlockEntityType<TowerShelfBlockEntity> TOWER_SHELF_BLOCK_ENTITY =
+            Registry.register(Registry.BLOCK_ENTITY_TYPE, Identifier.of(AestheticShelving.MOD_ID, "tower_shelf_be"),
+                    FabricBlockEntityTypeBuilder.create(TowerShelfBlockEntity::new,
+                            toBlockArray(ModBlocks.CEILING_SHELVES.elements())).build());
+
     public static void registerBlockEntities()
     {
 
