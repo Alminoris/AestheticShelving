@@ -78,9 +78,8 @@ public class CeilingShelfBlockEntityRenderer implements BlockEntityRenderer<Ceil
             f++;
         }
 
-        matrices.pop(); // головний push
+        matrices.pop();
     }
-
 
     private int getLightLevel(World world, BlockPos pos)
     {
