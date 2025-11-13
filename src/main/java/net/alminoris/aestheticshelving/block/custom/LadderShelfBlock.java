@@ -163,7 +163,8 @@ public class LadderShelfBlock extends BlockWithEntity implements BlockEntityProv
     }
 
     @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
+    @Nullable
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
     {
         return type == ModBlockEntities.LADDER_SHELF_BLOCK_ENTITY ? (world1, pos, state1, blockEntity) ->
         {
