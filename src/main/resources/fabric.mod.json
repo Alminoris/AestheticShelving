@@ -29,7 +29,7 @@
 		"aestheticshelving.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.14",
+		"fabricloader": ">=0.17.2",
 		"minecraft": "~1.18.2",
 		"java": ">=17",
 		"fabric-api": "*"

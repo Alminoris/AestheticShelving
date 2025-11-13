@@ -3,6 +3,7 @@ package net.alminoris.aestheticshelving.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.alminoris.aestheticshelving.AestheticShelving;
 import net.alminoris.aestheticshelving.block.ModBlocks;
+
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -13,12 +14,12 @@ import net.minecraft.util.Identifier;
 import static net.alminoris.aestheticshelving.util.helper.BlockSetsHelper.WOOD_COLORS;
 import static net.alminoris.aestheticshelving.util.helper.BlockSetsHelper.getWoodName;
 
-public class StandingShelfScreen extends HandledScreen<StandingShelfScreenHandler>
+public class TowerShelfScreen extends HandledScreen<TowerShelfScreenHandler>
 {
     private final Identifier TEXTURE = new Identifier(AestheticShelving.MOD_ID,
-            "textures/gui/"+ getWoodName(ModBlocks.STANDING_SHELVES, handler.blockEntity) +"_standing.png");;
+            "textures/gui/"+ getWoodName(ModBlocks.TOWER_SHELVES, handler.blockEntity) +"_tower.png");;
 
-    public StandingShelfScreen(StandingShelfScreenHandler handler, PlayerInventory inventory, Text title)
+    public TowerShelfScreen(TowerShelfScreenHandler handler, PlayerInventory inventory, Text title)
     {
         super(handler, inventory, title);
     }
@@ -30,16 +31,16 @@ public class StandingShelfScreen extends HandledScreen<StandingShelfScreenHandle
         titleY = 10;
         titleX = 10;
         playerInventoryTitleX = 10;
-        playerInventoryTitleY = 68;
+        playerInventoryTitleY = 80;
     }
 
     @Override
     protected void drawForeground(MatrixStack matrices, int mouseX, int mouseY)
     {
         textRenderer.draw(matrices, this.title.asOrderedText(), this.titleX,
-                this.titleY, WOOD_COLORS.get(getWoodName(ModBlocks.STANDING_SHELVES, handler.blockEntity)));
+                this.titleY, WOOD_COLORS.get(getWoodName(ModBlocks.TOWER_SHELVES, handler.blockEntity)));
         textRenderer.draw(matrices, this.playerInventoryTitle.asOrderedText(),
-                this.playerInventoryTitleX, this.playerInventoryTitleY, WOOD_COLORS.get(getWoodName(ModBlocks.STANDING_SHELVES, handler.blockEntity)));
+                this.playerInventoryTitleX, this.playerInventoryTitleY, WOOD_COLORS.get(getWoodName(ModBlocks.TOWER_SHELVES, handler.blockEntity)));
     }
 
     @Override
@@ -52,7 +53,7 @@ public class StandingShelfScreen extends HandledScreen<StandingShelfScreenHandle
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
 
-        drawTexture(context, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        drawTexture(context, x, y, 0, 0, backgroundWidth, backgroundHeight+12);
     }
 
     @Override

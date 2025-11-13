@@ -1,6 +1,6 @@
 package net.alminoris.aestheticshelving.screen;
 
-import net.alminoris.aestheticshelving.block.entity.ShelfBlockEntity;
+import net.alminoris.aestheticshelving.block.entity.TowerShelfBlockEntity;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -10,30 +10,35 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
-public class ShelfScreenHandler extends ScreenHandler
+public class TowerShelfScreenHandler extends ScreenHandler
 {
     private final Inventory INVENTORY;
-    public final ShelfBlockEntity blockEntity;
+    public final TowerShelfBlockEntity blockEntity;
 
     //Client
-    public ShelfScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf)
+    public TowerShelfScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf)
     {
-        this(syncId, inventory, (ShelfBlockEntity) inventory.player.getWorld().getBlockEntity(buf.readBlockPos()));
+        this(syncId, inventory, (TowerShelfBlockEntity) inventory.player.getWorld().getBlockEntity(buf.readBlockPos()));
     }
 
     //Server
-    public ShelfScreenHandler(int syncId, PlayerInventory playerInventory,
-                              ShelfBlockEntity blockEntity)
+    public TowerShelfScreenHandler(int syncId, PlayerInventory playerInventory,
+                                   TowerShelfBlockEntity blockEntity)
     {
-        super(ModScreenHandlers.SHELF_SCREEN_HANDLER, syncId);
-        checkSize(blockEntity, 3);
+        super(ModScreenHandlers.TOWER_SHELF_SCREEN_HANDLER, syncId);
+        checkSize(blockEntity, 12);
         this.INVENTORY = blockEntity;
         INVENTORY.onOpen(playerInventory.player);
         this.blockEntity = blockEntity;
 
-        this.addSlot(new OneItemSlot(INVENTORY, 0, 62, 34));
-        this.addSlot(new OneItemSlot(INVENTORY, 1, 80, 34));
-        this.addSlot(new OneItemSlot(INVENTORY, 2, 98, 34));
+        int l = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                this.addSlot(new OneItemSlot(INVENTORY, l++, 53+18*j, 26+18*i));
+            }
+        }
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
@@ -92,7 +97,7 @@ public class ShelfScreenHandler extends ScreenHandler
         {
             for (int l = 0; l < 9; ++l)
             {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 96 + i * 18));
             }
         }
     }
@@ -101,7 +106,7 @@ public class ShelfScreenHandler extends ScreenHandler
     {
         for (int i = 0; i < 9; ++i)
         {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 154));
         }
     }
 }

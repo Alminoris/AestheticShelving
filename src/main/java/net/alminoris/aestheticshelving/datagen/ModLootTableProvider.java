@@ -7,33 +7,22 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider
 {
-    public ModLootTableProvider(FabricDataGenerator dataGenerator)
+    public ModLootTableProvider(FabricDataGenerator dataOutput)
     {
-        super(dataGenerator);
+        super(dataOutput);
     }
 
     @Override
     public void generateBlockLootTables()
     {
-        for(String name : BlockSetsHelper.WOODS)
+        for(String name : BlockSetsHelper.getWoods())
         {
             addDrop(ModBlocks.SHELVES.get(name));
             addDrop(ModBlocks.STANDING_SHELVES.get(name));
             addDrop(ModBlocks.CEILING_SHELVES.get(name));
-        }
-
-        for(String name : BlockSetsHelper.EXTRA_WOODS_AN)
-        {
-            addDrop(ModBlocks.SHELVES.get(name));
-            addDrop(ModBlocks.STANDING_SHELVES.get(name));
-            addDrop(ModBlocks.CEILING_SHELVES.get(name));
-        }
-
-        for(String name : BlockSetsHelper.EXTRA_WOODS_WF)
-        {
-            addDrop(ModBlocks.SHELVES.get(name));
-            addDrop(ModBlocks.STANDING_SHELVES.get(name));
-            addDrop(ModBlocks.CEILING_SHELVES.get(name));
+            addDrop(ModBlocks.CORNER_SHELVES.get(name));
+            addDrop(ModBlocks.LADDER_SHELVES.get(name));
+            addDrop(ModBlocks.TOWER_SHELVES.get(name));
         }
     }
 }

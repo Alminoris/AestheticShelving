@@ -1,6 +1,6 @@
 package net.alminoris.aestheticshelving.screen;
 
-import net.alminoris.aestheticshelving.block.entity.ShelfBlockEntity;
+import net.alminoris.aestheticshelving.block.entity.CornerShelfBlockEntity;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -10,30 +10,29 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
-public class ShelfScreenHandler extends ScreenHandler
+public class CornerShelfScreenHandler extends ScreenHandler
 {
     private final Inventory INVENTORY;
-    public final ShelfBlockEntity blockEntity;
+    public final CornerShelfBlockEntity blockEntity;
 
     //Client
-    public ShelfScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf)
+    public CornerShelfScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf)
     {
-        this(syncId, inventory, (ShelfBlockEntity) inventory.player.getWorld().getBlockEntity(buf.readBlockPos()));
+        this(syncId, inventory, (CornerShelfBlockEntity) inventory.player.getWorld().getBlockEntity(buf.readBlockPos()));
     }
 
     //Server
-    public ShelfScreenHandler(int syncId, PlayerInventory playerInventory,
-                              ShelfBlockEntity blockEntity)
+    public CornerShelfScreenHandler(int syncId, PlayerInventory playerInventory,
+                                    CornerShelfBlockEntity blockEntity)
     {
-        super(ModScreenHandlers.SHELF_SCREEN_HANDLER, syncId);
-        checkSize(blockEntity, 3);
+        super(ModScreenHandlers.CORNER_SHELF_SCREEN_HANDLER, syncId);
+        checkSize(blockEntity, 2);
         this.INVENTORY = blockEntity;
         INVENTORY.onOpen(playerInventory.player);
         this.blockEntity = blockEntity;
 
-        this.addSlot(new OneItemSlot(INVENTORY, 0, 62, 34));
-        this.addSlot(new OneItemSlot(INVENTORY, 1, 80, 34));
-        this.addSlot(new OneItemSlot(INVENTORY, 2, 98, 34));
+        this.addSlot(new OneItemSlot(INVENTORY, 0, 71, 34));
+        this.addSlot(new OneItemSlot(INVENTORY, 1, 89, 34));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

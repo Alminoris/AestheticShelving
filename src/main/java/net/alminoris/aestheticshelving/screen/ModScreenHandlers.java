@@ -1,6 +1,7 @@
 package net.alminoris.aestheticshelving.screen;
 
 import net.alminoris.aestheticshelving.AestheticShelving;
+
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
@@ -19,6 +20,18 @@ public class ModScreenHandlers
     public static final ScreenHandlerType<CeilingShelfScreenHandler> CEILING_SHELF_SCREEN_HANDLER =
             Registry.register(Registry.SCREEN_HANDLER, new Identifier(AestheticShelving.MOD_ID, "ceiling_shelf"),
                     new ExtendedScreenHandlerType<>(CeilingShelfScreenHandler::new));
+
+    public static final ScreenHandlerType<CornerShelfScreenHandler> CORNER_SHELF_SCREEN_HANDLER =
+            Registry.register(Registry.SCREEN_HANDLER, new Identifier(AestheticShelving.MOD_ID, "corner_shelf"),
+                    new ExtendedScreenHandlerType<>(CornerShelfScreenHandler::new));
+
+    public static final ScreenHandlerType<TowerShelfScreenHandler> TOWER_SHELF_SCREEN_HANDLER =
+            Registry.register(Registry.SCREEN_HANDLER, new Identifier(AestheticShelving.MOD_ID, "tower_shelf"),
+                    new ExtendedScreenHandlerType<>(TowerShelfScreenHandler::new));
+
+    public static final ScreenHandlerType<LadderShelfScreenHandler> LADDER_SHELF_SCREEN_HANDLER =
+            Registry.register(Registry.SCREEN_HANDLER, new Identifier(AestheticShelving.MOD_ID, "ladder_shelf"),
+                    new ExtendedScreenHandlerType<>(LadderShelfScreenHandler::new));
 
     public static void registerScreenHandlers()
     {

@@ -1,7 +1,7 @@
 package net.alminoris.aestheticshelving.block.entity.renderer;
 
-import net.alminoris.aestheticshelving.block.custom.StandingShelfBlock;
-import net.alminoris.aestheticshelving.block.entity.StandingShelfBlockEntity;
+import net.alminoris.aestheticshelving.block.custom.CornerShelfBlock;
+import net.alminoris.aestheticshelving.block.entity.CornerShelfBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.OverlayTexture;
@@ -26,40 +26,40 @@ import java.util.List;
 import static net.minecraft.util.math.Vec3f.POSITIVE_X;
 import static net.minecraft.util.math.Vec3f.POSITIVE_Y;
 
-public class StandingShelfBlockEntityRenderer implements BlockEntityRenderer<StandingShelfBlockEntity>
+public class CornerShelfBlockEntityRenderer implements BlockEntityRenderer<CornerShelfBlockEntity>
 {
-    public StandingShelfBlockEntityRenderer(BlockEntityRendererFactory.Context context)
+    public CornerShelfBlockEntityRenderer(BlockEntityRendererFactory.Context context)
     {
 
     }
 
     @Override
-    public void render(StandingShelfBlockEntity entity, float tickDelta, MatrixStack matrices,
+    public void render(CornerShelfBlockEntity entity, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light, int overlay)
     {
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-        Dictionary<Integer, List<ItemStack>> stacks = entity.getRenderStack();
+        List<ItemStack> stacks = entity.getRenderStack();
 
-        // Враховуємо facing
-        Direction facing = entity.getCachedState().get(StandingShelfBlock.FACING);
+        Direction facing = entity.getCachedState().get(CornerShelfBlock.FACING);
 
         matrices.push();
 
-        // Центруємо і повертаємо полку згідно з facing
-        matrices.translate(0.5, 0.5, 0.5); // центр блоку
+        matrices.translate(0.5, 0.5, 0.5);
         switch (facing) {
             case NORTH -> matrices.multiply(POSITIVE_Y.getDegreesQuaternion(0));
             case SOUTH -> matrices.multiply(POSITIVE_Y.getDegreesQuaternion(180));
             case WEST  -> matrices.multiply(POSITIVE_Y.getDegreesQuaternion(90));
             case EAST  -> matrices.multiply(POSITIVE_Y.getDegreesQuaternion(-90));
         }
-        matrices.translate(-0.5, -0.5, -0.5); // повертаємо назад
+        matrices.translate(-0.5, -0.5, -0.5);
 
-        float f = 0.25f;
-        for (ItemStack stack : stacks.get(0))
+        float[] xArr = new float[] { 0.525f, 0.85f };
+        float[] zArr = new float[] { 0.15f, 0.475f };
+        int i = 0;
+        for (ItemStack stack : stacks)
         {
             matrices.push();
-            matrices.translate(f, (stack.getItem() instanceof BlockItem) ? 0.895f : 0.8425f, 0.65f);
+            matrices.translate(xArr[i], (stack.getItem() instanceof BlockItem) ? 0.64f : 0.5875f, zArr[i]);
             matrices.scale(0.25f, 0.25f, 0.25f);
             if (stack.getItem() instanceof BlockItem)
             {
@@ -76,36 +76,11 @@ public class StandingShelfBlockEntityRenderer implements BlockEntityRenderer<Sta
                     matrices, vertexConsumers, 1);
 
             matrices.pop();
-            f += 1f / stacks.get(0).size();
+            i++;
         }
 
-        f = 0.25f;
-        for (ItemStack stack : stacks.get(1))
-        {
-            matrices.push();
-            matrices.translate(f, (stack.getItem() instanceof BlockItem) ? 0.395f : 0.3425f, 0.65f);
-            matrices.scale(0.25f, 0.25f, 0.25f);
-            if (stack.getItem() instanceof BlockItem)
-            {
-                matrices.multiply(POSITIVE_Y.getDegreesQuaternion(315));
-                matrices.multiply(POSITIVE_X.getDegreesQuaternion(330));
-            }
-            else
-            {
-                matrices.multiply(POSITIVE_X.getDegreesQuaternion(270));
-            }
-
-            itemRenderer.renderItem(stack, ModelTransformation.Mode.GUI,
-                    getLightLevel(entity.getWorld(), entity.getPos()), OverlayTexture.DEFAULT_UV,
-                    matrices, vertexConsumers, 1);
-
-            matrices.pop();
-            f += 1f / stacks.get(1).size();
-        }
-
-        matrices.pop(); // головний push
+        matrices.pop();
     }
-
 
     private int getLightLevel(World world, BlockPos pos)
     {
